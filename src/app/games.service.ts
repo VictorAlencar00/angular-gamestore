@@ -1,18 +1,17 @@
-import { Observable } from 'rxjs';
-import { Game } from './game';
+import { Game } from './game.dto';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from '../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GamesService {
-  apiUrl = 'https://localhost:3000/games';
-
-  constructor(private http: HttpClient) {}
-
-  getGames(): Observable<Game[]> {
-    return this.http.get<Game[]>(this.apiUrl);
-    console.log(123);
+  public getGames(): Observable<Game[]> {
+    return this.http.get<Game[]>(environment.api + 'games');
+  }
+  constructor(private http: HttpClient) {
+    this.getGames();
   }
 }

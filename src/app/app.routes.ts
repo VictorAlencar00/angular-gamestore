@@ -11,4 +11,8 @@ export const routes: Routes = [
     path: 'browse',
     component: BrowseComponent,
   },
+  {
+    path: 'news',
+    component: BrowseComponent,
+  },
 ];

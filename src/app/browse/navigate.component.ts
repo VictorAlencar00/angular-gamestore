@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-browse',
   standalone: true,
   imports: [],
-  templateUrl: './browse.component.html',
-  styleUrl: './browse.component.css',
+  templateUrl: './navigate.component.html',
+  styleUrl: './navigate.component.css',
 })
 export class BrowseComponent {}
