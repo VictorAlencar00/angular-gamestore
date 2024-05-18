@@ -1,0 +1,37 @@
+<header class="bg-gray-800 text-white p-4">
+  <h1 class="font-medium text-2xl">GameStore</h1>
+</header>
+<main class="text-white justify-center md:px-80">
+  <nav class="flex w-full py-10 justify-between gap-8 text-xl">
+    <div class="flex gap-12 shrink w-full">
+      <a
+        [routerLink]="['']"
+        routerLinkActive="router-link-active"
+        class="hover:text-white text-gray-400"
+        >Discover</a
+      >
+      <a
+        [routerLink]="['/browse']"
+        routerLinkActive="router-link-active"
+        class="hover:text-white text-gray-400"
+        >Browse</a
+      >
+      <a
+        [routerLink]="['/']"
+        routerLinkActive="router-link-active"
+        class="hover:text-white text-gray-400"
+        >News</a
+      >
+    </div>
+    <input
+      type="text"
+      placeholder="Search..."
+      class="bg-gray-900 rounded-xl pl-4 text-gray-600 text-sm border-0 justify-end"
+    />
+    <div class="justify-end flex gap-12">
+      <a class="hover:text-white text-gray-400">Wishlist</a>
+      <a class="hover:text-white text-gray-400">Cart</a>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+</main>
