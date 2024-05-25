@@ -1,35 +1,83 @@
 <carousel></carousel>
-<div class="py-4">
-  <h3 class="text-xl">RPG Games</h3>
-  <ul class="flex gap-4">
-    @for (game of listedGames; track $index) {
-      <li class="w-40">
-        <a class="p-5 items-center" href="">
-          <picture class="w-40 h-30 over overflow-hidden">
+<div>
+  <h3 class="text-xl py-4 text-neutral-100">20% Off now!</h3>
+  <div class="flex overflow-y-hidden h-80 w-full">
+    <ul class="flex flex-nowrap gap-4 h-40">
+      @for (game of listedGames.slice(0, 7); track $index) {
+        <li class="w-40 flex flex-col relative" (mouseover)="showLikeButton()">
+          <div class="relative">
+            @if (shouldShowLikeButton) {
+              <button
+                (click)="likeGame($index)"
+                class="w-6 h-6 absolute right-2 top-2"
+              >
+                <img
+                  class="w-full h-full"
+                  [src]="
+                    game.liked
+                      ? '../../assets/favoriteIcon-full1.png'
+                      : '../../assets/favoriteIcon-full0.png'
+                  "
+                />
+              </button>
+            }
+            <a
+              class="items-center flex flex-col"
+              [routerLink]="['/game', game.name]"
+              ><img
+                class="w-40 h-56 object-cover object-top rounded"
+                src="{{ game.verticalsrc }}"
+                alt="image"
+              />
+            </a>
+          </div>
+          <span class="w-40 text-gray-400 text-sm">{{ game.publisher }}</span>
+          <span class="w-40">{{ game.name }}</span>
+          <span class="w-40">$59,99</span>
+        </li>
+      }
+    </ul>
+  </div>
+</div>
+<div class="">
+  <h3 class="text-xl py-4 text-neutral-100">Popular RPG Games</h3>
+  <div class="flex overflow-y-hidden h-80 w-full">
+    <ul class="flex flex-nowrap gap-4 h-40">
+      @for (game of rpgGames; track $index) {
+        <li class="w-40">
+          <a class="items-center flex flex-col" href="">
             <img
-              class="w-40 h-30 overflow-hidden"
-              src="{{ game.src }}"
+              class="w-40 h-56 object-cover rounded"
+              src="{{ game.verticalsrc }}"
               alt="image"
             />
-          </picture>
-
-          <span class="w-72">{{ game.name }}</span>
-        </a>
-      </li>
-    }
-  </ul>
+            <span class="w-40 text-gray-400 text-sm">From Software</span>
+            <span class="w-40">{{ game.name }}</span>
+            <span class="w-40">$59,99</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
 </div>
-
-<div>
-  <h3 class="text-xl">20% OFF</h3>
-  <ul class="flex gap-4">
-    @for (game of listedGames; track $index) {
-      <li class="w-40">
-        <a class="p-5 items-center" href="">
-          <img class="w-40" src="{{ game.src }}" alt="image" />
-          <span class="w-72">{{ game.name }}</span>
-        </a>
-      </li>
-    }
-  </ul>
+<div class="">
+  <h3 class="text-xl py-4 text-neutral-100">Popular Sports Games</h3>
+  <div class="flex overflow-y-hidden h-80 w-full">
+    <ul class="flex flex-nowrap gap-4 h-40">
+      @for (game of sportsGames; track $index) {
+        <li class="w-40">
+          <a class="items-center flex flex-col" href="">
+            <img
+              class="w-40 h-56 object-cover rounded"
+              src="{{ game.verticalsrc }}"
+              alt="image"
+            />
+            <span class="w-40 text-gray-400 text-sm">From Software</span>
+            <span class="w-40">{{ game.name }}</span>
+            <span class="w-40">$59,99</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
 </div>

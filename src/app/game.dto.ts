@@ -1,5 +1,11 @@
 export interface Game {
+  id?: number;
   name: string;
-  src: string;
-  category: string;
+  verticalsrc: string;
+  horizontalsrc: string;
+  genre: string;
+  liked: boolean;
+  publisher: string;
+  developer: string;
+  releaseDate: Date;
 }

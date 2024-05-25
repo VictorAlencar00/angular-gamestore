@@ -8,10 +8,19 @@ import { environment } from '../environments/environment.development';
   providedIn: 'root',
 })
 export class GamesService {
-  public getGames(): Observable<Game[]> {
-    return this.http.get<Game[]>(environment.api + 'games');
-  }
   constructor(private http: HttpClient) {
     this.getGames();
   }
+
+  public getGames(): Observable<Game[]> {
+    return this.http.get<Game[]>(environment.api + 'games');
+  }
+
+  public getGameByName(name: String): Observable<Game> {
+    return this.http.get<Game>(environment.api + 'games?name=' + name);
+  }
+
+  // public getGameById(id: number): Observable<Game> {
+  //   return this.http.get<Game>(environment.api + 'game/' + id);
+  // }
 }

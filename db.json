@@ -1,34 +1,141 @@
 {
   "games": [
     {
-      "name": "Elden Ring",
-      "src": "../../assets/Bloodborne-cover.jpeg",
-      "category": "RPG"
+      "id": 0,
+      "name": "Star Wars Jedi: Fallen Order",
+      "verticalsrc": "../../assets/jedifallenordervertical.jpeg",
+      "horizontalsrc": "../../assets/starwarsjedifallenorder.jpg",
+      "genre": "Action",
+      "publisher": "Eletronic Arts",
+      "developer": "Respawn Entertainment",
+      "liked": false,
+      "releaseDate": "12/12/12"
     },
     {
+      "id": 1,
+      "name": "Bloodborne",
+      "verticalsrc": "../../assets/Bloodborne-cover.jpeg",
+      "horizontalsrc": "",
+      "genre": "RPG",
+      "publisher": "From Software",
+      "liked": false
+    },
+    {
+      "id": 2,
       "name": "Baldurs Gate 3",
-      "src": "../../assets/baldursgate.jpeg",
-      "category": "RPG"
+      "verticalsrc": "../../assets/baldursgate.jpeg",
+      "horizontalsrc": "",
+      "genre": "RPG",
+      "publisher": "",
+      "liked": false
     },
     {
-      "name": "Skyrim",
-      "src": "../../assets/skyrim-cover.jpeg",
-      "category": "RPG"
+      "id": 3,
+      "name": "The Elder Scrolls V: Skyrim",
+      "verticalsrc": "../../assets/skyrim-cover.jpeg",
+      "horizontalsrc": "",
+      "genre": "RPG",
+      "publisher": "",
+      "liked": false
     },
     {
+      "id": 4,
       "name": "Elden Ring",
-      "src": "../../assets/eldenring-cover.jpeg",
-      "category": "RPG"
+      "verticalsrc": "../../assets/eldenring-cover.jpeg",
+      "horizontalsrc": "",
+      "genre": "RPG",
+      "publisher": "From Software",
+      "liked": false
     },
     {
+      "id": 5,
       "name": "The Witcher",
-      "src": "../../assets/thewitcher.jpeg",
-      "category": "RPG"
+      "verticalsrc": "../../assets/thewitcher3.jpeg",
+      "horizontalsrc": "",
+      "genre": "RPG",
+      "publisher": "",
+      "liked": false
     },
     {
+      "id": 6,
       "name": "CyberPunk 2077",
-      "src": "../../assets/Cyberpunk2077.jpeg",
-      "category": "RPG"
+      "verticalsrc": "../../assets/Cyberpunk2077.jpeg",
+      "horizontalsrc": "",
+      "genre": "RPG",
+      "publisher": "",
+      "liked": false
+    },
+    {
+      "id": 7,
+      "name": "BattleFront II",
+      "verticalsrc": "../../assets/battlefront2.jpeg",
+      "horizontalsrc": "",
+      "genre": "",
+      "publisher": "",
+      "liked": false
+    },
+    {
+      "id": 8,
+      "name": "Fifa 24",
+      "verticalsrc": "../../assets/fifa24.jpeg",
+      "horizontalsrc": "",
+      "genre": "SPORTS",
+      "publisher": "",
+      "liked": false
+    },
+    {
+      "id": 9,
+      "name": "Fifa 23",
+      "verticalsrc": "../../assets/fifa23.jpeg",
+      "horizontalsrc": "",
+      "genre": "SPORTS",
+      "publisher": "",
+      "liked": false
+    },
+    {
+      "id": 10,
+      "name": "Fifa 22",
+      "verticalsrc": "../../assets/fifa22.jpeg",
+      "horizontalsrc": "",
+      "genre": "SPORTS",
+      "publisher": "",
+      "liked": false
+    },
+    {
+      "id": 11,
+      "name": "Star Wars Jedi: Survivor",
+      "verticalsrc": "../../assets/jedisurvivorvertical.jpeg",
+      "horizontalsrc": "",
+      "genre": "Action",
+      "publisher": "",
+      "liked": false
+    },
+    {
+      "id": 12,
+      "name": "Resident Evil 2 Remake",
+      "verticalsrc": "../../assets/residentevil2remake.jpeg",
+      "horizontalsrc": "",
+      "genre": "Horror",
+      "publisher": "",
+      "liked": false
+    },
+    {
+      "id": 13,
+      "name": "Resident Evil 4 Remake",
+      "verticalsrc": "../../assets/residentevil4remake.jpeg",
+      "horizontalsrc": "",
+      "genre": "Horror",
+      "publisher": "",
+      "liked": false
+    },
+    {
+      "id": 14,
+      "name": "Resident Evil Village",
+      "verticalsrc": "../../assets/residentevilvillage.jpeg",
+      "horizontalsrc": "",
+      "genre": "Horror",
+      "publisher": "",
+      "liked": false
     }
   ]
 }
