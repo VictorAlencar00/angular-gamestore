@@ -1,0 +1,69 @@
+<div class="flex justify-evenly h-svh mt-56">
+  <form class="flex flex-col gap-2">
+    <strong class="text-xl">Payment Info:</strong>
+    <label class="text-lg text-zinc-200" for="payment"
+      >Choose the payment method:</label
+    >
+    <select name="paymentMethod" id="" class="text-black h-8 rounded">
+      <option value="credit">Credit Card</option>
+      <option value="debit">Debit Card</option>
+      <option value="pix">Pix</option>
+      <option value="bankSlip">Bank Slip</option>
+    </select>
+
+    @if (1) {
+      <div class="flex flex-col gap-1 w-80">
+        <label class="purchaseInfoLabel" for="">CPF:</label>
+        <input
+          class="purchaseInfoInput"
+          type="text"
+          title="Your CPF"
+          required
+          pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
+        />
+        <label class="purchaseInfoLabel" for="">Card Number:</label>
+        <input class="purchaseInfoInput" type="text" />
+        <label class="purchaseInfoLabel" for="">Expire Date:</label>
+        <input
+          class="purchaseInfoInput"
+          type="text"
+          required
+          pattern="(0[1-9]|1[0-2])\/\d{2}"
+        />
+        <label for="">CVV Number:</label>
+        <input class="purchaseInfoInput" type="text" />
+      </div>
+    }
+    <div class="flex flex-col">
+      <button
+        class="bg-blue-500 text-white text-lg rounded my-2 py-1"
+        type="submit"
+      >
+        Confirm Payment
+      </button>
+      <a
+        class="bg-zinc-600 text-white text-lg rounded my-2 py-1 text-center"
+        href="/"
+        >Cancel</a
+      >
+    </div>
+  </form>
+  <div class="flex flex-col gap-5">
+    <div class="flex flex-col gap-2">
+      <strong class="text-xl py-1">Purchase Details:</strong
+      ><span class="text-zinc-200 py-2">You are buying:</span>
+      <img
+        class="h-40 rounded mb-4"
+        src="{{ namedGame?.horizontalsrc }}"
+        alt=""
+      />
+
+      <strong class="gameToBuy text-white">{{ namedGame?.name }}</strong>
+      <span class="text-zinc-300">{{ namedGame?.publisher }}</span>
+    </div>
+    <div class="flex flex-col py-2">
+      <strong class="text-lg text-zinc-300">Total:</strong>
+      <span class="text-xl">${{ namedGame?.price }}</span>
+    </div>
+  </div>
+</div>

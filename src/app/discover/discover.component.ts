@@ -16,6 +16,7 @@ import { RouterLink, RouterModule } from '@angular/router';
 export class DiscoverComponent implements AfterViewInit {
   listedGames: Game[] = [];
   rpgGames: Game[] = [];
+  actionGames: Game[] = [];
   sportsGames: Game[] = [];
   shouldShowLikeButton: boolean = false;
   showLikeButton() {
@@ -34,14 +35,18 @@ export class DiscoverComponent implements AfterViewInit {
   async loadGames(): Promise<void> {
     const newList: Game[] = await lastValueFrom(this.gamesService.getGames());
     this.listedGames = newList;
-    this.loadRpg(this.listedGames);
-    this.loadSports(this.listedGames);
+    this.loadRpgGames(this.listedGames);
+    this.loadSportsGames(this.listedGames);
+    this.loadActionGames(this.listedGames);
   }
 
-  loadRpg(fullList: Game[]) {
-    this.rpgGames = fullList.filter((game) => game.genre == 'RPG');
+  loadRpgGames(fullList: Game[]) {
+    this.rpgGames = fullList.filter((game) => game.genre.includes('RPG'));
   }
-  loadSports(fullList: Game[]) {
-    this.sportsGames = fullList.filter((game) => game.genre == 'SPORTS');
+  loadSportsGames(fullList: Game[]) {
+    this.sportsGames = fullList.filter((game) => game.genre.includes('Sports'));
+  }
+  loadActionGames(fullList: Game[]) {
+    this.actionGames = fullList.filter((game) => game.genre.includes('Action'));
   }
 }

@@ -8,4 +8,5 @@ export interface Game {
   publisher: string;
   developer: string;
   releaseDate: Date;
+  price: number;
 }

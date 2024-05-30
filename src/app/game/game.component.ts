@@ -2,20 +2,21 @@ import { Game } from './../game.dto';
 import { lastValueFrom, Observable } from 'rxjs';
 import { GamesService } from './../games.service';
 import { Component, OnInit, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-
+import { ActivatedRoute, RouterLink } from '@angular/router';
 @Component({
   selector: 'app-game',
   standalone: true,
   templateUrl: './game.component.html',
-  styleUrls: ['./game.component.css'],
+  imports: [RouterLink],
 })
 export class GameComponent implements OnInit {
+  paymentMehod: string = '';
+
+  public namedGame: Game | null = null;
   private gamesService = inject(GamesService);
   private route: ActivatedRoute = inject(ActivatedRoute);
   listedGame: any | null = null;
   observableGame!: Observable<Game>;
-  namedGame: Game | null = null;
 
   async ngOnInit(): Promise<void> {
     const gameName: string = this.route.snapshot.paramMap.get('name')!;

@@ -1,0 +1,40 @@
+<div class="">
+  <h3 class="text-xl py-4">All Games</h3>
+  <div class="flex h-72 w-full">
+    <ul class="flex flex-wrap gap-4 w-full">
+      @for (game of listedGames; track $index) {
+        <li class="flex flex-col relative" (mouseover)="showLikeButton()">
+          <div class="relative">
+            @if (shouldShowLikeButton) {
+              <button
+                (click)="likeGame($index)"
+                class="w-6 h-6 absolute right-2 top-2"
+              >
+                <img
+                  class="w-full h-full"
+                  [src]="
+                    game.liked
+                      ? '../../assets/favoriteIcon-full1.png'
+                      : '../../assets/favoriteIcon-full0.png'
+                  "
+                />
+              </button>
+            }
+            <a
+              class="items-center flex flex-col"
+              [routerLink]="['/game', game.name]"
+              ><img
+                class="w-48 h-64 object-cover object-top rounded"
+                src="{{ game.verticalsrc }}"
+                alt="image"
+              />
+            </a>
+          </div>
+          <span class="w-40 text-gray-400 text-sm">{{ game.publisher }}</span>
+          <span class="w-40">{{ game.name }}</span>
+          <span class="w-40">${{ game.price }}</span>
+        </li>
+      }
+    </ul>
+  </div>
+</div>
