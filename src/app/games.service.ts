@@ -20,6 +20,16 @@ export class GamesService {
     return this.http.get<Game>(environment.api + 'games?name=' + name);
   }
 
+  loadRpgGames(fullList: Game[]) {
+    return fullList.filter((game) => game.genre.includes('RPG'));
+  }
+  loadSportsGames(fullList: Game[]) {
+    return fullList.filter((game) => game.genre.includes('Sports'));
+  }
+  loadActionGames(fullList: Game[]) {
+    return fullList.filter((game) => game.genre.includes('Action'));
+  }
+
   // public getGameById(id: number): Observable<Game> {
   //   return this.http.get<Game>(environment.api + 'game/' + id);
   // }

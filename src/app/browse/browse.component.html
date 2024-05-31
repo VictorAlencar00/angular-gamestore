@@ -1,9 +1,9 @@
 <div class="">
   <h3 class="text-xl py-4">All Games</h3>
-  <div class="flex h-72 w-full">
-    <ul class="flex flex-wrap gap-4 w-full">
+  <div class="flex w-full">
+    <ul class="flex flex-wrap gap-3 w-full">
       @for (game of listedGames; track $index) {
-        <li class="flex flex-col relative" (mouseover)="showLikeButton()">
+        <li class="flex flex-col relative w-48" (mouseover)="showLikeButton()">
           <div class="relative">
             @if (shouldShowLikeButton) {
               <button
@@ -20,19 +20,17 @@
                 />
               </button>
             }
-            <a
-              class="items-center flex flex-col"
-              [routerLink]="['/game', game.name]"
+            <a [routerLink]="['/game', game.name]"
               ><img
-                class="w-48 h-64 object-cover object-top rounded"
+                class="w-full h-64 object-cover object-top rounded"
                 src="{{ game.verticalsrc }}"
                 alt="image"
               />
             </a>
           </div>
-          <span class="w-40 text-gray-400 text-sm">{{ game.publisher }}</span>
-          <span class="w-40">{{ game.name }}</span>
-          <span class="w-40">${{ game.price }}</span>
+          <span class="w-full text-zinc-300 text-sm">{{ game.publisher }}</span>
+          <span class="w-full">{{ game.name }}</span>
+          <span class="w-full">${{ game.price }}</span>
         </li>
       }
     </ul>

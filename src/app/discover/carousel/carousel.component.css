@@ -1,3 +1,8 @@
 .carousel {
   height: 500px;
 }
+.carousel-picture {
+  min-width: 800px;
+  max-width: 1000px;
+  height: 500px;
+}

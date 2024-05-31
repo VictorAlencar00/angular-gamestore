@@ -1,5 +1,5 @@
 import { Game } from './../game.dto';
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, inject } from '@angular/core';
 import { CarouselComponent } from './carousel/carousel.component';
 import { lastValueFrom } from 'rxjs';
 import { GamesService } from '../games.service';
@@ -28,6 +28,7 @@ export class DiscoverComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.loadGames();
   }
+
   likeGame(index: number) {
     this.listedGames[index].liked = !this.listedGames[index].liked;
   }
@@ -35,18 +36,8 @@ export class DiscoverComponent implements AfterViewInit {
   async loadGames(): Promise<void> {
     const newList: Game[] = await lastValueFrom(this.gamesService.getGames());
     this.listedGames = newList;
-    this.loadRpgGames(this.listedGames);
-    this.loadSportsGames(this.listedGames);
-    this.loadActionGames(this.listedGames);
-  }
-
-  loadRpgGames(fullList: Game[]) {
-    this.rpgGames = fullList.filter((game) => game.genre.includes('RPG'));
-  }
-  loadSportsGames(fullList: Game[]) {
-    this.sportsGames = fullList.filter((game) => game.genre.includes('Sports'));
-  }
-  loadActionGames(fullList: Game[]) {
-    this.actionGames = fullList.filter((game) => game.genre.includes('Action'));
+    this.rpgGames = this.gamesService.loadRpgGames(this.listedGames);
+    this.sportsGames = this.gamesService.loadSportsGames(this.listedGames);
+    this.actionGames = this.gamesService.loadActionGames(this.listedGames);
   }
 }
