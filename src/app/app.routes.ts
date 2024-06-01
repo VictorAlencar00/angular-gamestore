@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { DiscoverComponent } from './discover/discover.component';
 import { BrowseComponent } from './browse/browse.component';
 import { GameComponent } from './game/game.component';
-import { BuyGameComponent } from './game/buy-game/buy-game.component';
+import { GamePayComponent } from './game/game-pay/game-pay.component';
 
 export const routes: Routes = [
   {
@@ -15,7 +15,7 @@ export const routes: Routes = [
   },
   {
     path: 'game/:name/buy',
-    component: BuyGameComponent,
+    component: GamePayComponent,
   },
   {
     path: 'browse',

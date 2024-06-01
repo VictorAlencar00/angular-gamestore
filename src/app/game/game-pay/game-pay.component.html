@@ -1,38 +1,24 @@
-<div class="flex justify-evenly h-svh mt-56">
-  <form class="flex flex-col gap-2">
+<div class="flex flex-col md:flex-row gap-10 justify-center h-svh mt-56">
+  <form [formGroup]="form" class="flex flex-col gap-2 w-96">
     <strong class="text-xl">Payment Info:</strong>
     <label class="text-lg text-zinc-200" for="payment"
       >Choose the payment method:</label
     >
-    <select name="paymentMethod" id="" class="text-black h-8 rounded">
+    <select
+      name="paymentMethod"
+      id="paymentMethod"
+      class="text-black h-8 rounded"
+      formControlName="method"
+      (change)="chosedPaymentMethod(form.get('method')?.value)"
+    >
       <option value="credit">Credit Card</option>
       <option value="debit">Debit Card</option>
       <option value="pix">Pix</option>
       <option value="bankSlip">Bank Slip</option>
     </select>
 
-    @if (1) {
-      <div class="flex flex-col gap-1 w-96">
-        <label class="purchaseInfoLabel" for="">CPF:</label>
-        <input
-          class="purchaseInfoInput"
-          type="text"
-          title="Your CPF"
-          required
-          pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
-        />
-        <label class="purchaseInfoLabel" for="">Card Number:</label>
-        <input class="purchaseInfoInput" type="text" />
-        <label class="purchaseInfoLabel" for="">Expire Date:</label>
-        <input
-          class="purchaseInfoInput"
-          type="text"
-          required
-          pattern="(0[1-9]|1[0-2])\/\d{2}"
-        />
-        <label for="">CVV Number:</label>
-        <input class="purchaseInfoInput" type="text" />
-      </div>
+    @if (paymentMethodChosen == "credit") {
+      <pay-credit-form></pay-credit-form>
     }
     <div class="flex flex-col">
       <button
@@ -50,10 +36,10 @@
   </form>
   <div class="flex flex-col gap-5">
     <div class="flex flex-col gap-2">
-      <strong class="text-xl py-1">Purchase Details:</strong
+      <strong class="text-xl pb-1">Purchase Details:</strong
       ><span class="text-zinc-200 py-2">You are buying:</span>
       <img
-        class="h-40 rounded mb-4"
+        class="h-52 rounded mb-4"
         src="{{ namedGame?.horizontalsrc }}"
         alt=""
       />
@@ -61,9 +47,11 @@
       <strong class="gameToBuy text-white">{{ namedGame?.name }}</strong>
       <span class="text-zinc-300">{{ namedGame?.publisher }}</span>
     </div>
-    <div class="flex flex-col py-2">
+    <div class="flex flex-col py-2 gap-1">
       <strong class="text-lg text-zinc-300">Total:</strong>
-      <span class="text-xl">${{ namedGame?.price }}</span>
+      <span class="text-2xl border-t py-1 border-t-slate-300"
+        >${{ namedGame?.price }}</span
+      >
     </div>
   </div>
 </div>
