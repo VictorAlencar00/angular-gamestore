@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, input } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -16,6 +16,7 @@ import {
 })
 export class PayCreditFormComponent {
   constructor(private formBuilder: FormBuilder) {}
+  @Input() testingInput: string = '';
 
   paymentMethodChosen: string = '';
 
@@ -33,7 +34,7 @@ export class PayCreditFormComponent {
   ngOnInit() {
     this.form = this.formBuilder.group({
       cpf: ['', Validators.required],
-      cardNumber: ['', Validators.required],
+      cardNumber: ['', Validators.required, Validators.minLength(3)],
       expireDate: ['', Validators.required],
       cvv: ['', Validators.required],
     });

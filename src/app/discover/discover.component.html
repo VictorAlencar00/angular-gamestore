@@ -1,6 +1,6 @@
 <carousel></carousel>
 <div>
-  <h3 class="text-xl py-4 text-neutral-100">Action Games</h3>
+  <h3 class="text-xl py-4 text-zinc-200">Action Games</h3>
   <div class="flex overflow-y-hidden w-full">
     <ul class="flex flex-nowrap gap-4">
       @for (game of actionGames.slice(0, 7); track $index) {
@@ -31,7 +31,7 @@
               />
             </a>
           </div>
-          <span class="w-40 text-zinc-300 text-sm">{{ game.publisher }}</span>
+          <span class="w-40 text-zinc-400 text-sm">{{ game.publisher }}</span>
           <span class="w-40">{{ game.name }}</span>
           <span class="w-40">${{ game.price }}</span>
         </li>
@@ -40,7 +40,7 @@
   </div>
 </div>
 <div>
-  <h3 class="text-xl py-4 text-neutral-100">RPG Games</h3>
+  <h3 class="text-xl py-4 text-zinc-200">RPG Games</h3>
   <div class="flex overflow-y-hidden w-full">
     <ul class="flex flex-nowrap gap-4">
       @for (game of rpgGames.slice(0, 7); track $index) {
@@ -71,7 +71,7 @@
               />
             </a>
           </div>
-          <span class="w-40 text-zinc-300 text-sm">{{ game.publisher }}</span>
+          <span class="w-40 text-zinc-400 text-sm">{{ game.publisher }}</span>
           <span class="w-40">{{ game.name }}</span>
           <span class="w-40">${{ game.price }}</span>
         </li>

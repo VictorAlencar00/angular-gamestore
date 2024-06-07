@@ -20,7 +20,7 @@ export class DiscoverComponent implements AfterViewInit {
   sportsGames: Game[] = [];
   shouldShowLikeButton: boolean = false;
   showLikeButton() {
-    this.shouldShowLikeButton = true;
+    this.shouldShowLikeButton = false;
   }
 
   constructor(private gamesService: GamesService) {}

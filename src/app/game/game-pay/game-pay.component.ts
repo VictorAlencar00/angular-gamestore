@@ -6,6 +6,7 @@ import {
   FormBuilder,
   FormControl,
   FormGroup,
+  FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -30,6 +31,7 @@ import { PayCreditFormComponent } from './pay-credit-form/pay-credit-form.compon
 })
 export class GamePayComponent {
   constructor(private formBuilder: FormBuilder) {}
+  public testingOutput: string = '';
   public namedGame: Game | null = null;
   private gamesService = inject(GamesService);
   private route: ActivatedRoute = inject(ActivatedRoute);

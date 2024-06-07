@@ -18,7 +18,7 @@
     </select>
 
     @if (paymentMethodChosen == "credit") {
-      <pay-credit-form></pay-credit-form>
+      <pay-credit-form [testingInput]="testingOutput"></pay-credit-form>
     }
     <div class="flex flex-col">
       <button
@@ -55,3 +55,4 @@
     </div>
   </div>
 </div>
+<input type="text" ngModel="testingOutput" placeholder="123" />

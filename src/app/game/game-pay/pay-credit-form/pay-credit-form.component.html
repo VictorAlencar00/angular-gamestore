@@ -5,11 +5,20 @@
     formControlName="cpf"
     type="text"
     title="Your CPF"
+    required
+    pattern="\d{3}\.\d{3}\.\d{3}-\d{2}|\d{11}"
   />
   <label class="purchaseInfoLabel" for="">Card Number:</label>
   <input class="purchaseInfoInput" formControlName="cardNumber" type="text" />
   <label class="purchaseInfoLabel" for="">Expire Date:</label>
   <input class="purchaseInfoInput" formControlName="expireDate" type="text" />
   <label for="">CVV Number:</label>
-  <input class="purchaseInfoInput" formControlName="cvv" type="text" />
+  <input
+    class="purchaseInfoInput"
+    formControlName="cvv"
+    type="text"
+    required=""
+    pattern="\d{3,4}"
+  />
 </div>
+<span>{{ testingInput }}</span>
