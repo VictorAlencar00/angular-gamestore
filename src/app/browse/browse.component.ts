@@ -2,7 +2,7 @@ import { MenuFunctionalitiesService } from './../menu-functionalities.service';
 import { Game } from '../game.dto';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { GamesService } from '../games.service';
-import { Observable, Subscription, lastValueFrom } from 'rxjs';
+import { lastValueFrom } from 'rxjs';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
@@ -18,11 +18,11 @@ export class BrowseComponent implements OnInit {
   public searchSubscription: any;
   public gameNotFound: boolean = false;
   public gameSearched: string = '';
+  public searchedValue: string = '';
 
   constructor(
     private gamesService: GamesService,
     public menuFunctionalitiesService: MenuFunctionalitiesService,
-    public route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
@@ -35,11 +35,6 @@ export class BrowseComponent implements OnInit {
         }
         this.gameNotFound = false;
       });
-
-    this.route.url.subscribe((urlSegments) => {
-      const url = urlSegments.map((segment) => segment.path).join('/');
-      console.log(url);
-    });
   }
 
   ngOnDestroy(): void {
@@ -57,8 +52,9 @@ export class BrowseComponent implements OnInit {
   async loadSearchedGames(): Promise<void> {
     const newList: Game[] = await lastValueFrom(this.gamesService.getGames());
     this.listedGames = newList;
+    this.searchedValue = this.menuFunctionalitiesService.searchSubject.value;
     this.listedGames = newList.filter((game) =>
-      game.name.includes(this.menuFunctionalitiesService.searchSubject.value),
+      game.name.toLowerCase().includes(this.searchedValue.toLowerCase()),
     );
 
     if (this.listedGames.length == 0) {

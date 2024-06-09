@@ -2,7 +2,8 @@
   <h1 class="font-medium text-2xl">GameStore</h1>
 </header>
 <main class="text-white justify-center md:px-56">
-  <app-menu></app-menu>
-
+  @if (showMenu) {
+    <app-menu></app-menu>
+  }
   <router-outlet></router-outlet>
 </main>
