@@ -3,7 +3,7 @@ import { Game } from '../game.dto';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { GamesService } from '../games.service';
 import { Observable, Subscription, lastValueFrom } from 'rxjs';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-browse',
@@ -16,10 +16,13 @@ export class BrowseComponent implements OnInit {
   listedGames: Game[] = [];
   shouldShowLikeButton: boolean = false;
   public searchSubscription: any;
+  public gameNotFound: boolean = false;
+  public gameSearched: string = '';
 
   constructor(
     private gamesService: GamesService,
     public menuFunctionalitiesService: MenuFunctionalitiesService,
+    public route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
@@ -30,7 +33,13 @@ export class BrowseComponent implements OnInit {
         } else {
           this.loadSearchedGames();
         }
+        this.gameNotFound = false;
       });
+
+    this.route.url.subscribe((urlSegments) => {
+      const url = urlSegments.map((segment) => segment.path).join('/');
+      console.log(url);
+    });
   }
 
   ngOnDestroy(): void {
@@ -42,6 +51,7 @@ export class BrowseComponent implements OnInit {
   async loadGames(): Promise<void> {
     const newList: Game[] = await lastValueFrom(this.gamesService.getGames());
     this.listedGames = newList;
+    this.gameNotFound = false;
   }
 
   async loadSearchedGames(): Promise<void> {
@@ -50,9 +60,13 @@ export class BrowseComponent implements OnInit {
     this.listedGames = newList.filter((game) =>
       game.name.includes(this.menuFunctionalitiesService.searchSubject.value),
     );
+
+    if (this.listedGames.length == 0) {
+      this.gameNotFound = true;
+      this.gameSearched = this.menuFunctionalitiesService.searchSubject.value;
+    }
   }
 
-  //throw into a service
   showLikeButton() {
     this.shouldShowLikeButton = false;
   }

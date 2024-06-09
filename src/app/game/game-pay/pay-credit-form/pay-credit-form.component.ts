@@ -1,4 +1,4 @@
-import { Component, Input, input } from '@angular/core';
+import { Component, Input, OnInit, input } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -12,9 +12,9 @@ import {
   standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './pay-credit-form.component.html',
-  styleUrl: './pay-credit-form.component.css',
+  styleUrls: ['./pay-credit-form.component.css'],
 })
-export class PayCreditFormComponent {
+export class PayCreditFormComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
   @Input() testingInput: string = '';
 

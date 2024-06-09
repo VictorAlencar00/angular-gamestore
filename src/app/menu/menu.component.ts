@@ -1,6 +1,6 @@
-import { Observable } from 'rxjs';
-import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Observable, map } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { MenuFunctionalitiesService } from '../menu-functionalities.service';
 
 @Component({
@@ -11,14 +11,16 @@ import { MenuFunctionalitiesService } from '../menu-functionalities.service';
   styleUrl: './menu.component.css',
 })
 export class MenuComponent {
-  constructor(public menuFunctionalities: MenuFunctionalitiesService) {}
-  public testValue: any;
+  constructor(
+    public menuFunctionalities: MenuFunctionalitiesService,
+    public router: Router,
+  ) {}
+
   onInputChange(event: Event) {
+    this.router.navigate(['./browse']);
     const inputElement = event.target as HTMLInputElement;
     if (inputElement) {
       this.menuFunctionalities.setSearchedValue(inputElement.value);
-      this.testValue = this.menuFunctionalities.searchSubject.value;
-      console.log(this.testValue);
     }
   }
 }

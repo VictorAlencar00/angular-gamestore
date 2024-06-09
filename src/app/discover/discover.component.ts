@@ -4,7 +4,7 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { lastValueFrom } from 'rxjs';
 import { GamesService } from '../games.service';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterLink, RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'discover-component',
