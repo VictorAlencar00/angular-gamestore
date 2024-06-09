@@ -21,6 +21,7 @@ export class MenuComponent {
     const inputElement = event.target as HTMLInputElement;
     if (inputElement) {
       this.menuFunctionalities.setSearchedValue(inputElement.value);
+
     }
   }
 }
