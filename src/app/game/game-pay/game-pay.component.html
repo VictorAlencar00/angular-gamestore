@@ -9,7 +9,7 @@
       id="paymentMethod"
       class="text-black h-8 rounded"
       formControlName="method"
-      (change)="chosedPaymentMethod(form.get('method')?.value)"
+      (change)="chosenPaymentMethod(form.get('method')?.value)"
     >
       <option value="credit">Credit Card</option>
       <option value="debit">Debit Card</option>
@@ -20,19 +20,16 @@
     @if (paymentMethodChosen == "credit") {
       <pay-credit-form></pay-credit-form>
     }
-    <div class="flex flex-col">
-      <button
-        class="bg-blue-500 text-white text-lg rounded my-2 py-1"
-        type="submit"
-      >
-        Confirm Payment
-      </button>
-      <a
-        class="bg-zinc-600 text-white text-lg rounded my-2 py-1 text-center"
-        href="/"
-        >Cancel</a
-      >
-    </div>
+
+    @if (!paymentMethodChosen) {
+      <div class="flex flex-col">
+        <a
+          class="bg-zinc-600 text-white text-lg rounded my-2 py-1 text-center"
+          href="/"
+          >Cancel</a
+        >
+      </div>
+    }
   </form>
   <div class="flex flex-col gap-5">
     <div class="flex flex-col gap-2">

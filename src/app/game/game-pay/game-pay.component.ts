@@ -37,7 +37,7 @@ export class GamePayComponent {
   observableGame!: Observable<Game>;
   paymentMethodChosen: string = '';
 
-  chosedPaymentMethod(method: string) {
+  chosenPaymentMethod(method: string) {
     this.paymentMethodChosen = method;
   }
 
