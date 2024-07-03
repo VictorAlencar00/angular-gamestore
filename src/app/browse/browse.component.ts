@@ -14,7 +14,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 })
 export class BrowseComponent implements OnInit {
   listedGames: Game[] = [];
-  shouldShowLikeButton: boolean = false;
+  shouldShowLikeButton: boolean = true;
   public searchSubscription: any;
   public gameNotFound: boolean = false;
   public gameSearched: string = '';
@@ -64,10 +64,12 @@ export class BrowseComponent implements OnInit {
   }
 
   showLikeButton() {
-    this.shouldShowLikeButton = false;
+    this.shouldShowLikeButton = true;
   }
 
   likeGame(index: number) {
     this.listedGames[index].liked = !this.listedGames[index].liked;
+    const likedGames = this.listedGames.filter((game) => game.liked);
+    localStorage.setItem('likedGames', JSON.stringify(likedGames));
   }
 }

@@ -4,7 +4,7 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { lastValueFrom } from 'rxjs';
 import { GamesService } from '../games.service';
 import { HttpClientModule } from '@angular/common/http';
-import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'discover-component',
@@ -18,9 +18,9 @@ export class DiscoverComponent implements AfterViewInit {
   rpgGames: Game[] = [];
   actionGames: Game[] = [];
   sportsGames: Game[] = [];
-  shouldShowLikeButton: boolean = false;
+  shouldShowLikeButton: boolean = true;
   showLikeButton() {
-    this.shouldShowLikeButton = false;
+    this.shouldShowLikeButton = true;
   }
 
   constructor(private gamesService: GamesService) {}

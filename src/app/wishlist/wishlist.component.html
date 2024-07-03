@@ -1,0 +1,18 @@
+<ul class="flex flex-wrap gap-3 w-full">
+  @for (game of games; track $index) {
+    <li class="flex flex-col relative w-48">
+      <div class="relative">
+        <a [routerLink]="['/game', game.name]"
+          ><img
+            class="w-full h-64 object-cover object-top rounded"
+            src="{{ game.verticalsrc }}"
+            alt="image"
+          />
+        </a>
+      </div>
+      <span class="w-full text-zinc-300 text-sm">{{ game.publisher }}</span>
+      <span class="w-full">{{ game.name }}</span>
+      <span class="w-full">${{ game.price }}</span>
+    </li>
+  }
+</ul>

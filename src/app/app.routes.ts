@@ -3,6 +3,7 @@ import { DiscoverComponent } from './discover/discover.component';
 import { BrowseComponent } from './browse/browse.component';
 import { GameComponent } from './game/game.component';
 import { GamePayComponent } from './game/game-pay/game-pay.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 export const routes: Routes = [
   {
@@ -20,5 +21,9 @@ export const routes: Routes = [
   {
     path: 'browse',
     component: BrowseComponent,
+  },
+  {
+    path: 'wishlist',
+    component: WishlistComponent,
   },
 ];
