@@ -23,11 +23,19 @@ export class GamesService {
   loadRpgGames(fullList: Game[]) {
     return fullList.filter((game) => game.genre.includes('RPG'));
   }
+
   loadSportsGames(fullList: Game[]) {
     return fullList.filter((game) => game.genre.includes('Sports'));
   }
+
   loadActionGames(fullList: Game[]) {
     return fullList.filter((game) => game.genre.includes('Action'));
+  }
+
+  public likeGame(listedGames: Game[], index: number): void {
+    listedGames[index].liked = !listedGames[index].liked;
+    const likedGames = listedGames.filter((game) => game.liked);
+    localStorage.setItem('likedGames', JSON.stringify(likedGames));
   }
 
   // public getGameById(id: number): Observable<Game> {

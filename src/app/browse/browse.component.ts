@@ -47,6 +47,15 @@ export class BrowseComponent implements OnInit {
     const newList: Game[] = await lastValueFrom(this.gamesService.getGames());
     this.listedGames = newList;
     this.gameNotFound = false;
+
+    const likedGamesFromStorage: Game[] = JSON.parse(
+      localStorage.getItem('likedGames') || '[]',
+    );
+    this.listedGames.forEach((game) => {
+      if (likedGamesFromStorage.some((likedGame) => likedGame.id === game.id)) {
+        game.liked = true;
+      }
+    });
   }
 
   async loadSearchedGames(): Promise<void> {
@@ -68,8 +77,6 @@ export class BrowseComponent implements OnInit {
   }
 
   likeGame(index: number) {
-    this.listedGames[index].liked = !this.listedGames[index].liked;
-    const likedGames = this.listedGames.filter((game) => game.liked);
-    localStorage.setItem('likedGames', JSON.stringify(likedGames));
+    this.gamesService.likeGame(this.listedGames, index);
   }
 }

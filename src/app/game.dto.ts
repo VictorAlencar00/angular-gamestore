@@ -1,5 +1,5 @@
 export interface Game {
-  id?: number;
+  id: number;
   name: string;
   verticalsrc: string;
   horizontalsrc: string;

@@ -1,5 +1,5 @@
 import { Game } from './../game.dto';
-import { AfterViewInit, Component, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CarouselComponent } from './carousel/carousel.component';
 import { lastValueFrom } from 'rxjs';
 import { GamesService } from '../games.service';
@@ -13,31 +13,41 @@ import { RouterModule } from '@angular/router';
   templateUrl: './discover.component.html',
   styleUrl: './discover.component.css',
 })
-export class DiscoverComponent implements AfterViewInit {
+export class DiscoverComponent implements OnInit {
   listedGames: Game[] = [];
   rpgGames: Game[] = [];
   actionGames: Game[] = [];
   sportsGames: Game[] = [];
   shouldShowLikeButton: boolean = true;
-  showLikeButton() {
-    this.shouldShowLikeButton = true;
-  }
 
   constructor(private gamesService: GamesService) {}
 
-  ngAfterViewInit(): void {
+  ngOnInit(): void {
     this.loadGames();
-  }
-
-  likeGame(index: number) {
-    this.listedGames[index].liked = !this.listedGames[index].liked;
   }
 
   async loadGames(): Promise<void> {
     const newList: Game[] = await lastValueFrom(this.gamesService.getGames());
     this.listedGames = newList;
+    const likedGamesFromStorage: Game[] = JSON.parse(
+      localStorage.getItem('likedGames') || '[]',
+    );
+    this.listedGames.forEach((game) => {
+      if (likedGamesFromStorage.some((likedGame) => likedGame.id === game.id)) {
+        game.liked = true;
+      }
+    });
+
     this.rpgGames = this.gamesService.loadRpgGames(this.listedGames);
     this.sportsGames = this.gamesService.loadSportsGames(this.listedGames);
     this.actionGames = this.gamesService.loadActionGames(this.listedGames);
+  }
+
+  showLikeButton() {
+    this.shouldShowLikeButton = true;
+  }
+
+  likeGame(index: number) {
+    this.gamesService.likeGame(this.listedGames, index);
   }
 }

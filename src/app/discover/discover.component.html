@@ -8,7 +8,7 @@
           <div class="relative">
             @if (shouldShowLikeButton) {
               <button
-                (click)="likeGame($index)"
+                (click)="likeGame(game.id)"
                 class="w-6 h-6 absolute right-2 top-2"
               >
                 <img
@@ -48,7 +48,7 @@
           <div class="relative">
             @if (shouldShowLikeButton) {
               <button
-                (click)="likeGame($index)"
+                (click)="likeGame(game.id)"
                 class="w-6 h-6 absolute right-2 top-2"
               >
                 <img
