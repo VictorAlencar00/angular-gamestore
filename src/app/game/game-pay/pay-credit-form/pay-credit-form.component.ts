@@ -14,7 +14,7 @@ import { CpfValidationService } from '../cpf-validation.service';
   standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './pay-credit-form.component.html',
-  styleUrl: './pay-credit-form.component.css',
+  styleUrl: './pay-credit-form.component.scss',
 })
 export class PayCreditFormComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}

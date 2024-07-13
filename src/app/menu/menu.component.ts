@@ -8,7 +8,7 @@ import { MenuFunctionalitiesService } from '../menu-functionalities.service';
   standalone: true,
   imports: [RouterOutlet, RouterLink],
   templateUrl: './menu.component.html',
-  styleUrl: './menu.component.css',
+  styleUrl: './menu.component.scss',
 })
 export class MenuComponent {
   constructor(

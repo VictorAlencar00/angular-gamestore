@@ -26,7 +26,7 @@ import { PayCreditFormComponent } from './pay-credit-form/pay-credit-form.compon
     PayCreditFormComponent,
   ],
   templateUrl: './game-pay.component.html',
-  styleUrl: './game-pay.component.css',
+  styleUrl: './game-pay.component.scss',
 })
 export class GamePayComponent {
   constructor(private formBuilder: FormBuilder) {}

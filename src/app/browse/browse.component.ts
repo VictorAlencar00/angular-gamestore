@@ -10,7 +10,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
   standalone: true,
   imports: [RouterLink],
   templateUrl: './browse.component.html',
-  styleUrl: './browse.component.css',
+  styleUrl: './browse.component.scss',
 })
 export class BrowseComponent implements OnInit {
   listedGames: Game[] = [];

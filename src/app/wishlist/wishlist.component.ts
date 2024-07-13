@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [RouterLink],
   templateUrl: './wishlist.component.html',
-  styleUrl: './wishlist.component.css',
+  styleUrl: './wishlist.component.scss',
 })
 export class WishlistComponent implements OnInit {
   private gamesservice = inject(GamesService);

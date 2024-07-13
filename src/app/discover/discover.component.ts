@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [CarouselComponent, HttpClientModule, RouterModule],
   templateUrl: './discover.component.html',
-  styleUrl: './discover.component.css',
+  styleUrl: './discover.component.scss',
 })
 export class DiscoverComponent implements OnInit {
   listedGames: Game[] = [];

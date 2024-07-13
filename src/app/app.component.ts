@@ -14,7 +14,7 @@ import { filter } from 'rxjs';
   standalone: true,
   imports: [RouterOutlet, MenuComponent, HttpClientModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
   title = 'gamestore';
