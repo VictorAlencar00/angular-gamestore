@@ -2,50 +2,26 @@
   <div class="carousel-picture">
     <img
       class="rounded h-full w-full object-cover"
-      src="../../assets/fallenorderhorizontal.jpg"
+      src="{{ highlightedGame?.horizontalsrc }}"
       alt="image"
     />
   </div>
+
   <div class="h-full flex flex-col justify-between gap-2 text-lg">
-    <a class="flex items-center gap-2 h-1/5 rounded" href="">
-      <img
-        class="w-40 h-full rounded object-cover"
-        src="../../assets/godofwarhorizontal.jpeg"
-        alt="image"
-      />
-      <span class="w-52">God of War</span>
-    </a>
-    <a class="flex items-center gap-2 h-1/5" href="">
-      <img
-        class="w-40 h-full rounded object-cover"
-        src="../../assets/calistoprotocol.jpeg"
-        alt="image"
-      />
-      <span class="w-52">Calisto Protocol</span>
-    </a>
-    <a class="flex items-center gap-2 h-1/5" href="">
-      <img
-        class="w-40 h-full rounded object-cover"
-        src="../../assets/control.jpeg"
-        alt="image"
-      />
-      <span class="w-52">Control</span>
-    </a>
-    <a class="flex items-center gap-2 h-1/5" href="">
-      <img
-        class="w-40 h-full rounded object-cover"
-        src="../../assets/detroit.jpeg"
-        alt="image"
-      />
-      <span class="w-52">Detroit: Become Human</span>
-    </a>
-    <a class="flex items-center gap-2 h-1/5" href="">
-      <img
-        class="w-40 h-full rounded object-cover"
-        src="../../assets/sekiroHorizontal.webp"
-        alt="image"
-      />
-      <span class="w-52">Sekiro Shadows Die Twice</span>
-    </a>
+    @for (game of games; track $index) {
+      <div
+        class="flex items-center gap-2 h-1/5 rounded"
+        href=""
+        (click)="selectGame(game)"
+      >
+        <img
+          class="w-40 h-full rounded object-cover"
+          src="{{ game.horizontalsrc }}"
+          alt="image"
+          onclick="selectGame(game)"
+        />
+        <span class="w-52">{{ game.name }}</span>
+      </div>
+    }
   </div>
 </div>
