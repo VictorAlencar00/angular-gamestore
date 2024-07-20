@@ -4,6 +4,7 @@ import { BrowseComponent } from './browse/browse.component';
 import { GameComponent } from './game/game.component';
 import { GamePayComponent } from './game/game-pay/game-pay.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
+// import { SuccessfulPurchaseComponent } from './successful-purchase/successful-purchase.component';
 
 export const routes: Routes = [
   {

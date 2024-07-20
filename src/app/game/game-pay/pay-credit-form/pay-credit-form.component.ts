@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 
 import { CpfValidationService } from '../cpf-validation.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'pay-credit-form',
@@ -17,7 +18,10 @@ import { CpfValidationService } from '../cpf-validation.service';
   styleUrl: './pay-credit-form.component.scss',
 })
 export class PayCreditFormComponent implements OnInit {
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    public router: Router,
+  ) {}
 
   cpfValidation = inject(CpfValidationService);
 
@@ -55,9 +59,9 @@ export class PayCreditFormComponent implements OnInit {
 
   async onSubmitForm(): Promise<void> {
     if (this.creditForm.valid) {
-      alert('Thank you for your purchase');
-    } else {
-      alert('Invalid purchase data.');
+    }
+    if (!this.creditForm.valid) {
+      alert('Purchase went wrong');
     }
   }
 }

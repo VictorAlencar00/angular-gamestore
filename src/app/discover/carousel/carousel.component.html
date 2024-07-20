@@ -1,11 +1,11 @@
 <div class="lg:flex gap-5 carousel w-full h-full">
-  <div class="picture">
+  <a class="picture" [routerLink]="['/game', highlightedGame?.name]">
     <img
       class="rounded h-full w-full object-cover"
       src="{{ highlightedGame?.horizontalsrc }}"
       alt="image"
     />
-  </div>
+  </a>
 
   <div class="h-full flex flex-col justify-between gap-2 text-lg">
     @for (game of games; track $index) {

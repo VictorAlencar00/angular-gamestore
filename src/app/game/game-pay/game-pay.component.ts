@@ -55,5 +55,9 @@ export class GamePayComponent {
     });
   }
 
+  public successfulPurchase() {
+    alert('it worked');
+  }
+
   // @Output() valueChange = new EventEmitter<boolean>();
 }

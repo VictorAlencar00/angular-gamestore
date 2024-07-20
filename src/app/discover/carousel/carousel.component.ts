@@ -1,11 +1,13 @@
+import { RouterLink } from '@angular/router';
 import { Game } from '../../game.dto';
 import { GamesService } from './../../games.service';
 import { Component, OnInit } from '@angular/core';
+import { timeInterval } from 'rxjs';
 
 @Component({
   selector: 'carousel',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './carousel.component.html',
   styleUrl: './carousel.component.scss',
 })
@@ -23,5 +25,16 @@ export class CarouselComponent implements OnInit {
 
   selectGame(game: Game) {
     this.highlightedGame = game;
+    this.alternateGame(game);
+  }
+
+  alternateGame(game: Game) {
+    setTimeout(() => {
+      let nextGame = Number(game.id) + 1;
+      if (nextGame > 4) {
+        nextGame = 0;
+      }
+      this.selectGame(this.games[nextGame]);
+    }, 3000);
   }
 }
