@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
     private router: Router,
   ) {}
   public showMenu: boolean = true;
+
   ngOnInit(): void {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))

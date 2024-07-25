@@ -1,8 +1,10 @@
-<header class="bg-zinc-900 text-white p-4">
-  <h1 class="font-medium text-2xl">GameStore</h1>
-</header>
+@if (showMenu == true) {
+  <header class="bg-zinc-900 text-white p-4">
+    <h1 class="font-medium text-2xl">GameStore</h1>
+  </header>
+}
 <main class="text-white justify-center md:px-56">
-  @if (showMenu) {
+  @if (showMenu == true) {
     <app-menu></app-menu>
   }
   <router-outlet></router-outlet>
