@@ -1,14 +1,15 @@
 import { MenuFunctionalitiesService } from './../menu-functionalities.service';
 import { Game } from '../game.dto';
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GamesService } from '../games.service';
 import { lastValueFrom } from 'rxjs';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-browse',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, HttpClientModule],
   templateUrl: './browse.component.html',
   styleUrl: './browse.component.scss',
 })
@@ -48,14 +49,18 @@ export class BrowseComponent implements OnInit {
     this.listedGames = newList;
     this.gameNotFound = false;
 
-    const likedGamesFromStorage: Game[] = JSON.parse(
-      localStorage.getItem('likedGames') || '[]',
-    );
-    this.listedGames.forEach((game) => {
-      if (likedGamesFromStorage.some((likedGame) => likedGame.id === game.id)) {
-        game.liked = true;
-      }
-    });
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const likedGamesFromStorage: Game[] = JSON.parse(
+        window.localStorage.getItem('likedGames') || '[]',
+      );
+      this.listedGames.forEach((game) => {
+        if (
+          likedGamesFromStorage.some((likedGame) => likedGame.id === game.id)
+        ) {
+          game.liked = true;
+        }
+      });
+    }
   }
 
   async loadSearchedGames(): Promise<void> {

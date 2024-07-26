@@ -2,7 +2,6 @@ import { RouterLink } from '@angular/router';
 import { Game } from '../../game.dto';
 import { GamesService } from './../../games.service';
 import { Component, OnInit } from '@angular/core';
-import { timeInterval } from 'rxjs';
 
 @Component({
   selector: 'carousel',
@@ -14,12 +13,18 @@ import { timeInterval } from 'rxjs';
 export class CarouselComponent implements OnInit {
   games: Game[] = [];
   highlightedGame: Game | null = null;
+  private timeoutId: any;
 
   constructor(public gamesService: GamesService) {}
   ngOnInit(): void {
+    this.getCarousel();
+  }
+
+  getCarousel() {
     this.gamesService.getGames().subscribe((data: Game[]) => {
       this.games = data.slice(0, 5);
       this.highlightedGame = this.games[0];
+      this.alternateGame(this.games[0]);
     });
   }
 
@@ -29,7 +34,10 @@ export class CarouselComponent implements OnInit {
   }
 
   alternateGame(game: Game) {
-    setTimeout(() => {
+    if (this.timeoutId) {
+      clearTimeout(this.timeoutId);
+    }
+    this.timeoutId = setTimeout(() => {
       let nextGame = Number(game.id) + 1;
       if (nextGame > 4) {
         nextGame = 0;

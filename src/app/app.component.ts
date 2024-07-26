@@ -32,9 +32,7 @@ export class AppComponent implements OnInit {
         while (currentRoute.firstChild) {
           currentRoute.firstChild.url.subscribe((urlSegments) => {
             const url = urlSegments.map((segment) => segment.path).join('/');
-            // Here you can add conditions to check if the specific route is reached
             if (url.includes('/buy')) {
-              // Do something when the specific route is reached
               this.showMenu = false;
             }
           });

@@ -29,14 +29,19 @@ export class DiscoverComponent implements OnInit {
   async loadGames(): Promise<void> {
     const newList: Game[] = await lastValueFrom(this.gamesService.getGames());
     this.listedGames = newList;
-    const likedGamesFromStorage: Game[] = JSON.parse(
-      localStorage.getItem('likedGames') || '[]',
-    );
-    this.listedGames.forEach((game) => {
-      if (likedGamesFromStorage.some((likedGame) => likedGame.id === game.id)) {
-        game.liked = true;
-      }
-    });
+
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const likedGamesFromStorage: Game[] = JSON.parse(
+        window.localStorage.getItem('likedGames') || '[]',
+      );
+      this.listedGames.forEach((game) => {
+        if (
+          likedGamesFromStorage.some((likedGame) => likedGame.id === game.id)
+        ) {
+          game.liked = true;
+        }
+      });
+    }
 
     this.rpgGames = this.gamesService.loadRpgGames(this.listedGames);
     this.sportsGames = this.gamesService.loadSportsGames(this.listedGames);
