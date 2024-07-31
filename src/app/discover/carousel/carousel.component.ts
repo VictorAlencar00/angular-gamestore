@@ -20,7 +20,7 @@ export class CarouselComponent implements OnInit {
     this.getCarousel();
   }
 
-  getCarousel() {
+  async getCarousel(): Promise<void> {
     this.gamesService.getGames().subscribe((data: Game[]) => {
       this.games = data.slice(0, 5);
       this.highlightedGame = this.games[0];
@@ -34,15 +34,15 @@ export class CarouselComponent implements OnInit {
   }
 
   alternateGame(game: Game) {
-    if (this.timeoutId) {
-      clearTimeout(this.timeoutId);
+    // if (this.timeoutId) {
+    //   clearTimeout(this.timeoutId);
+    // }
+    // this.timeoutId = setInterval(() => {
+    let nextGame = Number(game?.id) + 1;
+    if (nextGame > 4) {
+      nextGame = 0;
     }
-    this.timeoutId = setTimeout(() => {
-      let nextGame = Number(game.id) + 1;
-      if (nextGame > 4) {
-        nextGame = 0;
-      }
-      this.selectGame(this.games[nextGame]);
-    }, 3000);
+    this.selectGame(this.games[nextGame]);
+    // }, 3000);
   }
 }
