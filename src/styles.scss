@@ -2,6 +2,14 @@
   font-family: "Inter", sans-serif;
 }
 
+body {
+  background: radial-gradient(circle at center, #002b36, #0d1117);
+}
+
+.card {
+  box-shadow: 0 0 3px 0 #021519;
+}
+
 /* You can add global styles to this file, and also import other style files */
 @tailwind base;
 @tailwind components;

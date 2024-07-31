@@ -4,7 +4,7 @@
   <div class="flex overflow-y-hidden w-full">
     <ul class="flex flex-nowrap gap-4">
       @for (game of actionGames.slice(0, 7); track $index) {
-        <li class="flex flex-col relative" (mouseover)="showLikeButton()">
+        <li class="flex flex-col relative card" (mouseover)="showLikeButton()">
           <div class="relative">
             @if (shouldShowLikeButton) {
               <button
@@ -44,7 +44,10 @@
   <div class="flex overflow-y-hidden w-full">
     <ul class="flex flex-nowrap gap-4">
       @for (game of rpgGames.slice(0, 7); track $index) {
-        <li class="flex flex-col relative gap-1" (mouseover)="showLikeButton()">
+        <li
+          class="flex flex-col shadow-md relative gap-1 card"
+          (mouseover)="showLikeButton()"
+        >
           <div class="relative">
             @if (shouldShowLikeButton) {
               <button

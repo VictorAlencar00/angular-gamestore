@@ -8,7 +8,10 @@
         </span>
       }
       @for (game of listedGames; track $index) {
-        <li class="flex flex-col relative w-48" (mouseover)="showLikeButton()">
+        <li
+          class="flex flex-col relative w-48 card"
+          (mouseover)="showLikeButton()"
+        >
           <div class="relative">
             @if (shouldShowLikeButton) {
               <button
@@ -27,7 +30,7 @@
             }
             <a [routerLink]="['/game', game.name]"
               ><img
-                class="w-full h-64 object-cover object-top rounded"
+                class="w-full h-64 object-cover object-top rounded card"
                 src="{{ game.verticalsrc }}"
                 alt="image"
               />
