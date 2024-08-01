@@ -24,12 +24,15 @@
     pattern="\d{3,4}"
   />
   <div class="flex flex-col">
-    <button
+    <a
+      [ngClass]="{ disabled: !creditForm.valid }"
       class="bg-blue-500 text-white text-lg rounded my-2 py-1"
       type="submit"
+      [routerLink]="['confirmation']"
+      routerLinkActive="router-link-active"
     >
       Confirm Payment
-    </button>
+    </a>
     <a
       class="bg-zinc-600 text-white text-lg rounded my-2 py-1 text-center"
       href="/"

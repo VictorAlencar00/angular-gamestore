@@ -8,12 +8,13 @@ import {
 } from '@angular/forms';
 
 import { CpfValidationService } from '../cpf-validation.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'pay-credit-form',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink, NgClass],
   templateUrl: './pay-credit-form.component.html',
   styleUrl: './pay-credit-form.component.scss',
 })
