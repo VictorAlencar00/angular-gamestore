@@ -4,37 +4,12 @@
   <div class="flex overflow-y-hidden w-full">
     <ul class="flex flex-nowrap gap-4">
       @for (game of actionGames.slice(0, 7); track $index) {
-        <li class="flex flex-col relative card" (mouseover)="showLikeButton()">
-          <div class="relative">
-            @if (shouldShowLikeButton) {
-              <button
-                (click)="likeGame(game.id)"
-                class="w-6 h-6 absolute right-2 top-2"
-              >
-                <img
-                  class="w-full h-full"
-                  [src]="
-                    game.liked
-                      ? '../../assets/favoriteIcon-full1.png'
-                      : '../../assets/favoriteIcon-full0.png'
-                  "
-                />
-              </button>
-            }
-            <a
-              class="items-center flex flex-col"
-              [routerLink]="['/game', game.name]"
-              ><img
-                class="w-48 h-64 object-cover object-top rounded"
-                src="{{ game.verticalsrc }}"
-                alt="image"
-              />
-            </a>
-          </div>
-          <span class="w-40 text-zinc-400 text-sm">{{ game.publisher }}</span>
-          <span class="w-40">{{ game.name }}</span>
-          <span class="w-40">${{ game.price }}</span>
-        </li>
+        <app-game-card
+          [game]="game"
+          [shouldShowLikeButton]="shouldShowLikeButton"
+          (like)="likeGame($event)"
+        >
+        </app-game-card>
       }
     </ul>
   </div>
@@ -44,40 +19,12 @@
   <div class="flex overflow-y-hidden w-full">
     <ul class="flex flex-nowrap gap-4">
       @for (game of rpgGames.slice(0, 7); track $index) {
-        <li
-          class="flex flex-col shadow-md relative gap-1 card"
-          (mouseover)="showLikeButton()"
+        <app-game-card
+          [game]="game"
+          [shouldShowLikeButton]="shouldShowLikeButton"
+          (like)="likeGame($event)"
         >
-          <div class="relative">
-            @if (shouldShowLikeButton) {
-              <button
-                (click)="likeGame(game.id)"
-                class="w-6 h-6 absolute right-2 top-2"
-              >
-                <img
-                  class="w-full h-full"
-                  [src]="
-                    game.liked
-                      ? '../../assets/favoriteIcon-full1.png'
-                      : '../../assets/favoriteIcon-full0.png'
-                  "
-                />
-              </button>
-            }
-            <a
-              class="items-center flex flex-col"
-              [routerLink]="['/game', game.name]"
-              ><img
-                class="w-48 h-64 object-cover object-top rounded"
-                src="{{ game.verticalsrc }}"
-                alt="image"
-              />
-            </a>
-          </div>
-          <span class="w-40 text-zinc-400 text-sm">{{ game.publisher }}</span>
-          <span class="w-40">{{ game.name }}</span>
-          <span class="w-40">${{ game.price }}</span>
-        </li>
+        </app-game-card>
       }
     </ul>
   </div>

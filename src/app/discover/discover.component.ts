@@ -1,15 +1,22 @@
-import { Game } from './../game.dto';
 import { Component, OnInit } from '@angular/core';
-import { CarouselComponent } from './carousel/carousel.component';
 import { lastValueFrom } from 'rxjs';
-import { GamesService } from '../games.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+
+import { GameCardComponent } from '../game-card/game-card.component';
+import { Game } from './../game.dto';
+import { CarouselComponent } from './carousel/carousel.component';
+import { GamesService } from '../games.service';
 
 @Component({
   selector: 'discover-component',
   standalone: true,
-  imports: [CarouselComponent, HttpClientModule, RouterModule],
+  imports: [
+    CarouselComponent,
+    HttpClientModule,
+    RouterModule,
+    GameCardComponent,
+  ],
   templateUrl: './discover.component.html',
   styleUrl: './discover.component.scss',
 })
@@ -18,7 +25,7 @@ export class DiscoverComponent implements OnInit {
   rpgGames: Game[] = [];
   actionGames: Game[] = [];
   sportsGames: Game[] = [];
-  shouldShowLikeButton: boolean = true;
+  shouldShowLikeButton: boolean = false;
 
   constructor(private gamesService: GamesService) {}
 
@@ -46,10 +53,6 @@ export class DiscoverComponent implements OnInit {
     this.rpgGames = this.gamesService.loadRpgGames(this.listedGames);
     this.sportsGames = this.gamesService.loadSportsGames(this.listedGames);
     this.actionGames = this.gamesService.loadActionGames(this.listedGames);
-  }
-
-  showLikeButton() {
-    this.shouldShowLikeButton = true;
   }
 
   likeGame(index: number) {

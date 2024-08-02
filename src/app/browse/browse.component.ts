@@ -1,21 +1,22 @@
-import { MenuFunctionalitiesService } from './../menu-functionalities.service';
-import { Game } from '../game.dto';
 import { Component, OnInit } from '@angular/core';
-import { GamesService } from '../games.service';
 import { lastValueFrom } from 'rxjs';
 import { RouterLink } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
+import { GameCardComponent } from '../game-card/game-card.component';
+import { GamesService } from '../games.service';
+import { MenuFunctionalitiesService } from './../menu-functionalities.service';
+import { Game } from '../game.dto';
 @Component({
   selector: 'app-browse',
   standalone: true,
-  imports: [RouterLink, HttpClientModule],
+  imports: [RouterLink, HttpClientModule, GameCardComponent],
   templateUrl: './browse.component.html',
   styleUrl: './browse.component.scss',
 })
 export class BrowseComponent implements OnInit {
   listedGames: Game[] = [];
-  shouldShowLikeButton: boolean = true;
+  shouldShowLikeButton: boolean = false;
   public searchSubscription: any;
   public gameNotFound: boolean = false;
   public gameSearched: string = '';
@@ -75,10 +76,6 @@ export class BrowseComponent implements OnInit {
       this.gameNotFound = true;
       this.gameSearched = this.menuFunctionalitiesService.searchSubject.value;
     }
-  }
-
-  showLikeButton() {
-    this.shouldShowLikeButton = true;
   }
 
   likeGame(index: number) {

@@ -8,38 +8,12 @@
         </span>
       }
       @for (game of listedGames; track $index) {
-        <li
-          class="flex flex-col relative w-48 card"
-          (mouseover)="showLikeButton()"
+        <app-game-card
+          [game]="game"
+          [shouldShowLikeButton]="shouldShowLikeButton"
+          (like)="likeGame($event)"
         >
-          <div class="relative">
-            @if (shouldShowLikeButton) {
-              <button
-                (click)="likeGame($index)"
-                class="w-6 h-6 absolute right-2 top-2"
-              >
-                <img
-                  class="w-full h-full"
-                  [src]="
-                    game.liked
-                      ? '../../assets/favoriteIcon-full1.png'
-                      : '../../assets/favoriteIcon-full0.png'
-                  "
-                />
-              </button>
-            }
-            <a [routerLink]="['/game', game.name]"
-              ><img
-                class="w-full h-64 object-cover object-top rounded card"
-                src="{{ game.verticalsrc }}"
-                alt="image"
-              />
-            </a>
-          </div>
-          <span class="w-full text-zinc-300 text-sm">{{ game.publisher }}</span>
-          <span class="w-full">{{ game.name }}</span>
-          <span class="w-full">${{ game.price }}</span>
-        </li>
+        </app-game-card>
       }
     </ul>
   </div>
