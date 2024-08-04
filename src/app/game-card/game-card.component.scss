@@ -1,0 +1,14 @@
+.gamecard {
+  .button {
+    display: none;
+
+    &.alwaysShow {
+      display: block;
+    }
+  }
+  &:hover {
+    .button {
+      display: block;
+    }
+  }
+}

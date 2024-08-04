@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 
 import { GamesService } from '../games.service';
@@ -14,8 +14,8 @@ import { GameCardComponent } from '../game-card/game-card.component';
   styleUrl: './wishlist.component.scss',
 })
 export class WishlistComponent implements OnInit {
+  constructor(private gamesService: GamesService) {}
   shouldShowLikeButton: boolean = false;
-  private gamesService = inject(GamesService);
   public games: Game[] = [];
 
   ngOnInit(): void {
@@ -29,6 +29,9 @@ export class WishlistComponent implements OnInit {
     this.games = allGames.filter((game) =>
       likedGames.some((likedGame: any) => likedGame.id === game.id),
     );
+    this.games.forEach((game) => {
+      game.liked = true;
+    });
   }
 
   likeGame(index: number) {

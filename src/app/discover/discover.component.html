@@ -4,12 +4,7 @@
   <div class="flex overflow-y-hidden w-full">
     <ul class="flex flex-nowrap gap-4">
       @for (game of actionGames.slice(0, 7); track $index) {
-        <app-game-card
-          [game]="game"
-          [shouldShowLikeButton]="shouldShowLikeButton"
-          (like)="likeGame($event)"
-        >
-        </app-game-card>
+        <app-game-card [game]="game" (like)="likeGame($event)"> </app-game-card>
       }
     </ul>
   </div>
@@ -19,12 +14,7 @@
   <div class="flex overflow-y-hidden w-full">
     <ul class="flex flex-nowrap gap-4">
       @for (game of rpgGames.slice(0, 7); track $index) {
-        <app-game-card
-          [game]="game"
-          [shouldShowLikeButton]="shouldShowLikeButton"
-          (like)="likeGame($event)"
-        >
-        </app-game-card>
+        <app-game-card [game]="game" (like)="likeGame($event)"> </app-game-card>
       }
     </ul>
   </div>

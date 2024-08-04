@@ -1,20 +1,19 @@
-<li class="flex flex-col shadow-md gap-1 card" (mouseover)="showLikeButton()">
-  <div class="relative like-button">
-    @if (shouldShowLikeButton) {
-      <button
-        (click)="likeGame(game.id)"
-        class="w-6 h-6 absolute right-2 top-2"
-      >
-        <img
-          class="w-full h-full"
-          [src]="
-            game.liked
-              ? '../../assets/favoriteIcon-full1.png'
-              : '../../assets/favoriteIcon-full0.png'
-          "
-        />
-      </button>
-    }
+<li class="flex flex-col shadow-md gap-1 gamecard">
+  <div class="relative like-button image">
+    <button
+      (click)="likeGame(game.id)"
+      class="w-6 h-6 absolute right-2 top-2 button"
+      [ngClass]="{ alwaysShow: game.liked }"
+    >
+      <img
+        class="w-full h-full"
+        [src]="
+          game.liked
+            ? '../../assets/favoriteIcon-full1.png'
+            : '../../assets/favoriteIcon-full0.png'
+        "
+      />
+    </button>
     <a class="items-center flex flex-col" [routerLink]="['/game', game.name]"
       ><img
         class="w-48 h-64 object-cover object-top rounded"
