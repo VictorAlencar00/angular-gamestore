@@ -16,11 +16,11 @@ export const routes: Routes = [
     component: GameComponent,
   },
   {
-    path: 'game/:name/buy',
+    path: 'game/:name/pay',
     component: GamePayComponent,
   },
   {
-    path: 'game/:name/buy/confirmation',
+    path: 'game/:name/pay/confirmation',
     component: PurchaseConfirmationComponent,
   },
   {

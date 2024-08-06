@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
         while (currentRoute.firstChild) {
           currentRoute.firstChild.url.subscribe((urlSegments) => {
             const url = urlSegments.map((segment) => segment.path).join('/');
-            if (url.includes('/buy')) {
+            if (url.includes('/pay')) {
               this.showMenu = false;
             }
           });

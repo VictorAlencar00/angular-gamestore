@@ -1,0 +1,42 @@
+<form
+  class="flex flex-col gap-1 w-96"
+  [formGroup]="debitForm"
+  (ngSubmit)="onSubmitForm()"
+>
+  <label class="purchaseInfoLabel" for="">CPF:</label>
+  <input
+    class="purchaseInfoInput"
+    formControlName="cpf"
+    title="Your CPF"
+    required
+    (input)="onCpfInput($event)"
+  />
+  <label class="purchaseInfoLabel" for="">Card Number:</label>
+  <input class="purchaseInfoInput" formControlName="cardNumber" type="number" />
+  <label class="purchaseInfoLabel" for="">Expire Date:</label>
+  <input class="purchaseInfoInput" formControlName="expireDate" type="date" />
+  <label for="">CVV Number:</label>
+  <input
+    class="purchaseInfoInput"
+    formControlName="cvv"
+    type="text"
+    required=""
+    pattern="\d{3,4}"
+  />
+  <div class="flex flex-col">
+    <a
+      [ngClass]="{ disabled: !debitForm.valid }"
+      class="bg-blue-500 text-white text-lg rounded my-2 py-1 text-center"
+      type="submit"
+      [routerLink]="['confirmation']"
+      routerLinkActive="router-link-active"
+    >
+      Confirm Payment
+    </a>
+    <a
+      class="bg-zinc-600 text-white text-lg rounded my-2 py-1 text-center"
+      href="/"
+      >Cancel</a
+    >
+  </div>
+</form>

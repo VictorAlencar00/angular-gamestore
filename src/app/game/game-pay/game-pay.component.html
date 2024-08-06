@@ -1,6 +1,6 @@
 <div class="flex flex-col md:flex-row gap-10 justify-center h-svh pt-56">
   <form [formGroup]="form" class="flex flex-col gap-2 w-96">
-    <strong class="text-xl">Payment Info:</strong>
+    <strong class="text-xl">Payment Info</strong>
     <label class="text-lg text-zinc-200" for="payment"
       >Choose the payment method:</label
     >
@@ -13,12 +13,13 @@
     >
       <option value="credit">Credit Card</option>
       <option value="debit">Debit Card</option>
-      <option value="pix">Pix</option>
-      <option value="bankSlip">Bank Slip</option>
     </select>
 
     @if (paymentMethodChosen == "credit") {
       <pay-credit-form></pay-credit-form>
+    }
+    @if (paymentMethodChosen == "debit") {
+      <pay-debit-form></pay-debit-form>
     }
 
     @if (!paymentMethodChosen) {
@@ -33,7 +34,7 @@
   </form>
   <div class="flex flex-col gap-5">
     <div class="flex flex-col gap-2">
-      <strong class="text-xl pb-1">Purchase Details:</strong
+      <strong class="text-xl pb-1">Purchase Details</strong
       ><span class="text-zinc-200 py-2">You are buying:</span>
       <img
         class="h-52 rounded mb-4"

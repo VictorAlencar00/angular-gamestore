@@ -1,0 +1,14 @@
+.purchaseInfoInput {
+  color: black;
+  height: 2rem;
+  border-radius: 0.25rem;
+  /* background-color: #0d1117; */
+}
+.purchaseInfoLabel {
+  font-size: 1.125rem /* 18px */;
+  line-height: 1.75rem /* 28px */;
+  color: rgb(228 228 231);
+}
+.disabled {
+  pointer-events: none;
+}

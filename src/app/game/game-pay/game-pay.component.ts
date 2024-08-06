@@ -15,6 +15,7 @@ import { Observable, lastValueFrom } from 'rxjs';
 import { GamesService } from '../../games.service';
 import { AppComponent } from '../../app.component';
 import { PayCreditFormComponent } from './pay-credit-form/pay-credit-form.component';
+import { PayDebitFormComponent } from './pay-debit-form/pay-debit-form.component';
 
 @Component({
   selector: 'game-pay',
@@ -24,6 +25,7 @@ import { PayCreditFormComponent } from './pay-credit-form/pay-credit-form.compon
     AppComponent,
     ReactiveFormsModule,
     PayCreditFormComponent,
+    PayDebitFormComponent,
   ],
   templateUrl: './game-pay.component.html',
   styleUrl: './game-pay.component.scss',
