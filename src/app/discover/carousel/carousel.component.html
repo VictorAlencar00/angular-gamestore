@@ -9,7 +9,11 @@
 
   <div class="h-full flex flex-col justify-between gap-2 text-lg">
     @for (game of games; track $index) {
-      <div class="flex items-center gap-2 h-1/5 rounded" href="">
+      <div
+        class="flex items-center gap-2 h-1/5 rounded"
+        href=""
+        (click)="selectGame(game)"
+      >
         <img
           class="w-40 h-full rounded object-cover card"
           src="{{ game.horizontalsrc }}"
