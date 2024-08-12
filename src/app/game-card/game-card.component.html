@@ -1,9 +1,9 @@
-<li class="flex flex-col shadow-md gap-1 gamecard">
+<li class="flex flex-col shadow-xl gap-1 w-48 gamecard">
   <div class="relative like-button image">
     <button
       (click)="likeGame(game.id)"
       class="w-6 h-6 absolute right-2 top-2 button"
-      [ngClass]="{ alwaysShow: game.liked }"
+      [ngClass]="{ likedGame: game.liked }"
     >
       <img
         class="w-full h-full"
@@ -22,7 +22,7 @@
       />
     </a>
   </div>
-  <span class="w-40 text-zinc-400 text-sm">{{ game.publisher }}</span>
-  <span class="w-40">{{ game.name }}</span>
-  <span class="w-40">${{ game.price }}</span>
+  <span class="text-zinc-400 text-sm info">{{ game.publisher }}</span>
+  <span class="info">{{ game.name }}</span>
+  <span class="info price">${{ game.price }}</span>
 </li>

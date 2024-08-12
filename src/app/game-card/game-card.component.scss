@@ -1,14 +1,34 @@
 .gamecard {
-  .button {
-    display: none;
-
-    &.alwaysShow {
-      display: block;
+  height: 365px;
+  &:hover {
+    transform: scale(1.005);
+    .button {
+      opacity: 1;
+      visibility: visible;
     }
   }
-  &:hover {
-    .button {
-      display: block;
+  .button {
+    visibility: hidden;
+    opacity: 0;
+    transition: 300ms;
+    &:hover {
+      transform: scale(1.1);
     }
+
+    &.likedGame {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1.1);
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+  .info {
+    padding: 0 2px;
+  }
+  .price {
+    font-size: 0.9rem;
+    color: rgb(220, 220, 220);
   }
 }

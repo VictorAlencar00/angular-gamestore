@@ -58,4 +58,18 @@ export class DiscoverComponent implements OnInit {
   likeGame(index: number) {
     this.gamesService.likeGame(this.listedGames, index);
   }
+
+  scrollLeft(listId: string): void {
+    const container = document.getElementById(listId);
+    if (container) {
+      container.scrollBy({ left: -container.clientWidth, behavior: 'smooth' });
+    }
+  }
+
+  scrollRight(listId: string): void {
+    const container = document.getElementById(listId);
+    if (container) {
+      container.scrollBy({ left: container.clientWidth, behavior: 'smooth' });
+    }
+  }
 }
