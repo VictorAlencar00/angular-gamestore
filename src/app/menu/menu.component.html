@@ -1,27 +1,29 @@
-<nav class="flex w-full py-10 justify-between gap-8 text-xl">
-  <div class="flex gap-12 shrink w-full">
+<div class="flex justify-center p-4 md:p-0">
+  <nav class="flex md:py-10 justify-between md:gap-8 text-xl menu">
+    <div class="flex gap-1 md:gap-12 shrink w-full">
+      <a
+        [routerLink]="['']"
+        routerLinkActive="router-link-active"
+        class="hover:text-white text-gray-400 animated-underline"
+        >Home</a
+      >
+      <a
+        [routerLink]="['/browse']"
+        routerLinkActive="router-link-active"
+        class="hover:text-white text-gray-400 animated-underline"
+        >Browse</a
+      >
+    </div>
+    <input
+      type="text"
+      placeholder="Search..."
+      (input)="onInputChange($event)"
+      class="bg-zinc-800 rounded-xl md:pl-4 h-8 text-white text-sm border-0 searchbar"
+    />
     <a
-      [routerLink]="['']"
-      routerLinkActive="router-link-active"
-      class="hover:text-white text-gray-400"
-      >Home</a
-    >
-    <a
-      [routerLink]="['/browse']"
-      routerLinkActive="router-link-active"
-      class="hover:text-white text-gray-400"
-      >Browse</a
-    >
-  </div>
-  <input
-    type="text"
-    placeholder="Search..."
-    (input)="onInputChange($event)"
-    class="bg-zinc-800 rounded-xl pl-4 h-8 text-white text-sm border-0 justify-end"
-  />
-  <div class="justify-end flex gap-12">
-    <a [routerLink]="['/wishlist']" class="hover:text-white text-gray-400"
+      [routerLink]="['/wishlist']"
+      class="hover:text-white text-gray-400 animated-underline"
       >Wishlist</a
     >
-  </div>
-</nav>
+  </nav>
+</div>

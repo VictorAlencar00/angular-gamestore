@@ -1,19 +1,31 @@
 import { Game } from './game.dto';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { finalize, Observable, tap } from 'rxjs';
 import { environment } from '../environments/environment.development';
+import { LoadingService } from './loading.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GamesService {
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private loadingService: LoadingService,
+  ) {
     this.getGames();
   }
 
   public getGames(): Observable<Game[]> {
-    return this.http.get<Game[]>(environment.api + 'games');
+    this.loadingService.setLoading(true);
+
+    return this.http.get<Game[]>(environment.api + 'games').pipe(
+      // tap(() => console.log('loading)')),
+      finalize(() => {
+        setTimeout(() => this.loadingService.setLoading(false), 500);
+        // this.loadingService.setLoading(false);
+      }),
+    );
   }
 
   public getGameByName(name: String): Observable<Game> {

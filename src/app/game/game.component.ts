@@ -3,10 +3,12 @@ import { lastValueFrom, Observable } from 'rxjs';
 import { GamesService } from './../games.service';
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+
 @Component({
   selector: 'app-game',
   standalone: true,
   templateUrl: './game.component.html',
+  styleUrl: './game.component.scss',
   imports: [RouterLink],
 })
 export class GameComponent implements OnInit {

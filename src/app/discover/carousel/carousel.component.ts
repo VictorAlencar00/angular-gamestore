@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Game } from '../../game.dto';
 import { GamesService } from './../../games.service';
+import { LoadingService } from '../../loading.service';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'carousel',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, AsyncPipe],
   templateUrl: './carousel.component.html',
   styleUrl: './carousel.component.scss',
 })
@@ -14,10 +16,25 @@ export class CarouselComponent implements OnInit {
   games: Game[] = [];
   highlightedGame: Game | null = null;
   private timeoutId: any;
+  private observer: IntersectionObserver | null = null;
 
-  constructor(public gamesService: GamesService) {}
+  constructor(
+    public gamesService: GamesService,
+    public loadingService: LoadingService,
+  ) {}
+
   ngOnInit(): void {
     this.getCarousel();
+  }
+
+  ngOnDestroy(): void {
+    if (this.timeoutId) {
+      clearInterval(this.timeoutId);
+    }
+
+    if (this.observer) {
+      this.observer.disconnect();
+    }
   }
 
   async getCarousel(): Promise<void> {
@@ -26,9 +43,12 @@ export class CarouselComponent implements OnInit {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            this.alternateGame(this.games[0]);
-            this.selectGame(this.games[0]);
-          } else {
+            if (this.games.length > 0) {
+              this.alternateGame(this.games[0]);
+              this.selectGame(this.games[0]);
+            } else if (!this.games.length) {
+              this.getCarousel();
+            }
           }
         });
       });

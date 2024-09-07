@@ -1,5 +1,7 @@
 .gamecard {
-  height: 365px;
+  min-height: 320px;
+  max-height: 380px;
+
   &:hover {
     transform: scale(1.005);
     .button {
@@ -25,7 +27,7 @@
     }
   }
   .info {
-    padding: 0 2px;
+    padding: 1px 3px;
   }
   .price {
     font-size: 0.9rem;

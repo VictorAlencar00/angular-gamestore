@@ -22,7 +22,9 @@
       />
     </a>
   </div>
-  <span class="text-zinc-400 text-sm info">{{ game.publisher }}</span>
-  <span class="info">{{ game.name }}</span>
-  <span class="info price">${{ game.price }}</span>
+  <div class="flex flex-col gap-1 pt-1 pb-2">
+    <span class="text-zinc-400 text-sm">{{ game.publisher }}</span>
+    <span>{{ game.name }}</span>
+    <span class="price">${{ game.price }}</span>
+  </div>
 </li>

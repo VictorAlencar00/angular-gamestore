@@ -1,7 +1,17 @@
 .carousel {
-  // height: 500px;
+  min-height: 150px;
+  max-height: 500px;
   .picture {
-    width: 1000px;
+    min-width: 250px;
+    max-width: 1000px;
+    min-height: 250px;
+    max-height: 500px;
     height: 500px;
+    width: 1000px;
+  }
+  .roulette {
+    @media screen and (max-width: 768px) and (max-height: 1024px) {
+      display: none;
+    }
   }
 }
