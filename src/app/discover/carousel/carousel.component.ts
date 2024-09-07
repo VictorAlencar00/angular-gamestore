@@ -47,7 +47,11 @@ export class CarouselComponent implements OnInit {
               this.alternateGame(this.games[0]);
               this.selectGame(this.games[0]);
             } else if (!this.games.length) {
-              this.getCarousel();
+              this.loadingService.loading.subscribe((loading) => {
+                if (loading == false) {
+                  this.getCarousel();
+                }
+              });
             }
           }
         });
