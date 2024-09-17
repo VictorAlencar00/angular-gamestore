@@ -9,20 +9,11 @@ import {
 import { MenuComponent } from './menu/menu.component';
 import { HttpClientModule } from '@angular/common/http';
 import { filter } from 'rxjs';
-import { LoadingService } from './loading.service';
-import { LoadingComponent } from './loading/loading.component';
-import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    RouterOutlet,
-    MenuComponent,
-    HttpClientModule,
-    LoadingComponent,
-    NgStyle,
-  ],
+  imports: [RouterOutlet, MenuComponent, HttpClientModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -31,10 +22,8 @@ export class AppComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    public loadingService: LoadingService,
   ) {}
   public showMenu: boolean = true;
-  public isLoading: Boolean = true;
 
   ngOnInit(): void {
     this.router.events
@@ -51,11 +40,5 @@ export class AppComponent implements OnInit {
           currentRoute = currentRoute.firstChild;
         }
       });
-
-    this.loadingService.loading.subscribe((loading) => {
-      if (loading == false) {
-        this.isLoading = false;
-      }
-    });
   }
 }

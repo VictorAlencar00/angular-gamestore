@@ -2,11 +2,6 @@
 @if (showMenu == true) {
   <app-menu></app-menu>
 }
-<div [ngStyle]="{ display: isLoading ? 'block' : 'none' }">
-  <loading-component></loading-component>
-</div>
-<div [ngStyle]="{ display: !isLoading ? 'block' : 'none' }">
-  <router-outlet></router-outlet>
-</div>
+<router-outlet></router-outlet>
 
 <!-- </main> -->
