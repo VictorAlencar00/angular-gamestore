@@ -1,17 +1,19 @@
 @if (listedGame) {
-  <main class="flex justify-center">
+  <main class="flex justify-center px-3" id="listedGame">
     <div id="game">
-      <h1 class="text-4xl w-full py-2">{{ namedGame?.name }}</h1>
-      <div class="lg:flex lg:justify-between gap-8">
+      <h1 class="text-3xl sm:text-4xl w-full pb-3 md:pb-10">
+        {{ namedGame?.name }}
+      </h1>
+      <div class="md:flex md:justify-between gap-8">
         <img
-          class="rounded w-3/4 object-cover"
+          class="rounded 1/4 md:w-3/5 lg:w-4/6 xl:w-9/12 object-cover"
           src="{{ namedGame?.horizontalsrc }}"
           alt=""
         />
         <div
-          class="flex flex-col justify-end items-center w-1/4 gap-4 relative"
+          class="flex justify-end items-center md:w-2/5 gap-4 relative flex-col-reverse md:flex-col"
         >
-          <div class="flex flex-col gap-3 w-full">
+          <div class="flex flex-col w-full py-2 gap-2">
             <span class="flex justify-between w-full">
               <span class="text-gray-300"> Title: </span>
               <span class=""> {{ namedGame?.name }}</span></span
@@ -34,15 +36,19 @@
             >
           </div>
           <div class="flex gap-2 flex-col justify-end w-full">
-            <span class="w-full">Price: $199 </span>
+            <span class="w-full text-lg text-center pt-2 md:text-start"
+              >Price: $199
+            </span>
 
             <button
               [routerLink]="['pay']"
-              class="w-full h-12 bg-blue-500 rounded text-white text-lg"
+              class="w-full h-12 bg-blue-500 rounded text-white text-lg px-4"
             >
               Buy Now
             </button>
-            <button class="w-full h-12 rounded bg-gray-900 border border-white">
+            <button
+              class="w-full h-12 rounded bg-gray-900 border border-white px-4"
+            >
               Add to Wishlist
             </button>
           </div>

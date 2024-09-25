@@ -1,23 +1,36 @@
 .carousel {
-  .highLightedGame {
-    .caption {
-      font-size: 20px;
-      position: relative;
-      bottom: 75px;
-      left: 55px;
-    }
-  }
+  display: flex;
   @media screen and (min-width: 1255px) {
     min-height: 150px;
     max-height: 500px;
-    display: flex;
+  }
+
+  &.hidden {
+    display: none;
+  }
+  .highLightedGame {
+    figure {
+      position: relative;
+      .caption {
+        font-size: 16px;
+        position: absolute;
+        bottom: 25px;
+        left: 25px;
+      }
+      @media screen and (min-width: 720px) {
+        .caption {
+          font-size: 20px;
+          left: 55px;
+        }
+      }
+    }
   }
 
   .picture {
     min-width: 300px;
-    max-width: 1250px;
+    max-width: 1180px;
 
-    width: 1150px;
+    width: 1180px;
     @media screen and (min-width: 1255px) {
       height: 500px;
       min-height: 250px;
@@ -29,12 +42,19 @@
     padding-left: 10px;
     height: 500px;
 
-    @media screen and (max-width: 1255px) and (max-height: 1024px) {
+    @media screen and (max-width: 1255px) {
       display: none;
     }
+
     img {
+      padding: 3px 4px;
       width: 190px;
       height: 90px;
+      &:hover,
+      &.focused {
+        transform: scale(1.15);
+        transition: 300ms ease-in-out;
+      }
     }
 
     span {

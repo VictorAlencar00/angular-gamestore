@@ -1,4 +1,14 @@
 .gameToBuy {
-  font-size: 1.05rem;
-  line-height: 12px;
+  @media screen and (max-width: 768px) {
+    align-items: center;
+  }
+  .name {
+    font-size: 1.05rem;
+    line-height: 12px;
+  }
+  .image {
+    @media screen and (max-width: 768px) {
+      width: 80vw;
+    }
+  }
 }

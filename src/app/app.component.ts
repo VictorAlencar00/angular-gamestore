@@ -9,11 +9,12 @@ import {
 import { MenuComponent } from './menu/menu.component';
 import { HttpClientModule } from '@angular/common/http';
 import { filter } from 'rxjs';
+import { MobileMenuComponent } from './mobile-menu/mobile-menu.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MenuComponent, HttpClientModule],
+  imports: [RouterOutlet, MenuComponent, MobileMenuComponent, HttpClientModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

@@ -1,0 +1,31 @@
+.mobile__menu {
+  display: none;
+}
+@media (max-width: 768px) {
+  .mobile__menu.active {
+    display: flex;
+    height: calc(100vh - 56px);
+    width: 100vw;
+    position: fixed;
+    z-index: 9998;
+    opacity: 1;
+    animation: fadeIn 0.5s ease;
+    margin: 0;
+  }
+  .links {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 35px;
+    padding-top: 40%;
+    align-items: center;
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    a {
+      font-size: larger;
+    }
+  }
+}

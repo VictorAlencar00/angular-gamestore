@@ -1,5 +1,12 @@
+@media media and (min-width: 768px) {
+  #game {
+    min-width: 650px;
+    max-width: 1400px;
+    width: 100%;
+  }
+}
 #game {
-  min-width: 650px;
-  max-width: 1400px;
-  width: 100%;
+  img {
+    max-width: 100%;
+  }
 }

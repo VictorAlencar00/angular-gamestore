@@ -1,29 +1,39 @@
-<div class="flex justify-center p-4 md:p-0">
-  <nav class="flex md:py-10 justify-between md:gap-8 text-xl menu">
-    <div class="flex gap-1 md:gap-12 shrink w-full">
+<menu class="flex justify-center p-5 md:p-0">
+  <nav
+    class="flex md:py-10 justify-between gap-2 sm:gap-4 md:gap-8 text-lg sm:text-xl menu"
+  >
+    <div class="flex gap-6 md:gap-12 shrink w-full">
       <a
         [routerLink]="['']"
         routerLinkActive="router-link-active"
-        class="hover:text-white text-gray-400 animated-underline"
-        >Home</a
-      >
+        class="hover:text-white text-gray-400 animated-underline items-center md:flex hidden"
+        >Home
+      </a>
       <a
         [routerLink]="['/browse']"
         routerLinkActive="router-link-active"
-        class="hover:text-white text-gray-400 animated-underline"
-        >Browse</a
+        class="hover:text-white text-gray-400 animated-underline items-center md:flex hidden"
       >
+        Browse
+      </a>
+      <button
+        class="hover:text-white text-gray-400 items-center md:hidden flex"
+        (click)="toggleMenu()"
+      >
+        <img src="../../assets/menu.png" class="w-6" alt="" />
+      </button>
     </div>
     <input
       type="text"
       placeholder="Search..."
       (input)="onInputChange($event)"
-      class="bg-zinc-800 rounded-xl md:pl-4 h-8 text-white text-sm border-0 searchbar"
+      class="bg-zinc-800 rounded-xl pl-2 md:pl-4 h-8 text-white text-sm border-0 searchbar"
+      (click)="handleType()"
     />
     <a
       [routerLink]="['/wishlist']"
-      class="hover:text-white text-gray-400 animated-underline"
+      class="hover:text-white text-gray-400 animated-underline text-center items-center md:flex hidden"
       >Wishlist</a
     >
   </nav>
-</div>
+</menu>

@@ -1,0 +1,25 @@
+<div class="mobile__menu">
+  <nav class="links">
+    <a
+      [routerLink]="['']"
+      routerLinkActive="router-link-active"
+      class="hover:text-white text-gray-400 animated-underline items-center"
+      (click)="toggleMenu()"
+      >Home
+    </a>
+    <a
+      [routerLink]="['/browse']"
+      routerLinkActive="router-link-active"
+      class="hover:text-white text-gray-400 animated-underline items-center"
+      (click)="toggleMenu()"
+    >
+      Browse
+    </a>
+    <a
+      [routerLink]="['/wishlist']"
+      class="hover:text-white text-gray-400 animated-underline text-center items-center"
+      (click)="toggleMenu()"
+      >Wishlist</a
+    >
+  </nav>
+</div>

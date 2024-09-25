@@ -1,4 +1,7 @@
-<div class="gap-5 carousel w-full h-full mb-2 justify-center" id="carousel">
+<div
+  class="gap-5 carousel w-full h-full mb-2 justify-center px-5 md:px-0 pt-3 md:pt-0"
+  id="carousel"
+>
   <a
     class="picture h-full highLightedGame"
     [routerLink]="['/game', highlightedGame?.name]"
@@ -7,11 +10,13 @@
       <img
         class="rounded-xl h-full w-full object-cover"
         src="{{ highlightedGame?.horizontalsrc }}"
-        alt="image"
+        alt="carousel game image"
       />
       <figcaption class="caption">
         {{ highlightedGame?.name }} <br />
-        ${{ highlightedGame?.price }}
+        @if (highlightedGame?.price) {
+          ${{ highlightedGame?.price }}
+        }
       </figcaption>
     </figure>
   </a>
@@ -24,7 +29,8 @@
         (click)="selectGame(game)"
       >
         <img
-          class="rounded-xl object-cover card"
+          class="rounded-xl object-cover"
+          [ngClass]="{ focused: game.name == highlightedGame?.name }"
           src="{{ game.horizontalsrc }}"
           alt="image"
         />
