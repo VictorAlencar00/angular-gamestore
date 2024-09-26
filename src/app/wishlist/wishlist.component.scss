@@ -1,4 +1,14 @@
+main {
+  display: flex;
+  justify-content: center;
+}
+
 #wishlist {
+  min-width: 300px;
+  max-width: 1440px;
+  width: 100%;
+  @media screen and (min-width: 768px) {
+  }
   &.hidden {
     display: none;
   }

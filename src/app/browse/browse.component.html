@@ -1,7 +1,9 @@
 <div class="flex justify-center flex-col browse px-3 md:px-0" id="browse">
   <h3 class="text-xl py-4 text-zinc-200">All Games</h3>
   <div class="flex w-full">
-    <ul class="flex flex-wrap gap-3 w-full pt-4">
+    <ul
+      class="flex flex-wrap gap-3 w-full pt-4 justify-center sm:justify-between"
+    >
       @if (gameNotFound) {
         <span
           >We Still dont have the title <strong>"{{ gameSearched }}"</strong>
