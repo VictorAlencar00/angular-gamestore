@@ -3,4 +3,21 @@
   max-width: 1440px;
   width: 100%;
   margin: auto;
+  .start {
+    justify-content: start;
+  }
+  h3 {
+    @media screen and (max-width: 350px) {
+      padding: 0 12px;
+    }
+    @media screen and (min-width: 350px) and (max-width: 364px) {
+      padding: 0 22px;
+    }
+    @media screen and (min-width: 365px) and (max-width: 429px) {
+      padding: 0 26px;
+    }
+    @media screen and (max-width: 640px) {
+      padding: 0 34px;
+    }
+  }
 }

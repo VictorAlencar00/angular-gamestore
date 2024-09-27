@@ -227,6 +227,18 @@
       "liked": false,
       "releaseDate": "04/20/2018",
       "price": 49.99
+    },
+    {
+      "id": 19,
+      "name": "Dragon Age: Inquisition",
+      "verticalsrc": "../../assets/dragonagevertical.jpg",
+      "horizontalsrc": "../../assets/dragonagehorizontal.jpg",
+      "genre": "RPG",
+      "publisher": "Electronic Arts",
+      "developer": "BioWare",
+      "liked": false,
+      "releaseDate": "11/18/2014",
+      "price": 49.99
     }
   ]
 }
