@@ -7,12 +7,21 @@ import { GameCardComponent } from '../game-card/game-card.component';
 import { GamesService } from '../games.service';
 import { MenuFunctionalitiesService } from './../menu-functionalities.service';
 import { Game } from '../game.dto';
+import { NgxSpinnerComponent, NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-browse',
   standalone: true,
-  imports: [RouterLink, HttpClientModule, GameCardComponent],
+  imports: [
+    RouterLink,
+    HttpClientModule,
+    GameCardComponent,
+    NgxSpinnerComponent,
+  ],
   templateUrl: './browse.component.html',
   styleUrl: './browse.component.scss',
+  providers: [
+    // NgxSpinnerService
+  ],
 })
 export class BrowseComponent implements OnInit {
   listedGames: Game[] = [];
@@ -25,9 +34,12 @@ export class BrowseComponent implements OnInit {
   constructor(
     private gamesService: GamesService,
     public menuFunctionalitiesService: MenuFunctionalitiesService,
+    public spinner: NgxSpinnerService,
   ) {}
 
   ngOnInit(): void {
+    this.spinner.show();
+
     this.searchSubscription =
       this.menuFunctionalitiesService.searchSubject.subscribe((value) => {
         if (value == '') {
@@ -61,6 +73,9 @@ export class BrowseComponent implements OnInit {
           game.liked = true;
         }
       });
+      setTimeout(() => {
+        this.spinner.hide();
+      }, 300);
     }
   }
 
