@@ -7,7 +7,8 @@ import { GameCardComponent } from '../game-card/game-card.component';
 import { GamesService } from '../games.service';
 import { MenuFunctionalitiesService } from './../menu-functionalities.service';
 import { Game } from '../game.dto';
-import { NgxSpinnerComponent, NgxSpinnerService } from 'ngx-spinner';
+import { LoadingSpinnerService } from '../loading-spinner.service';
+import { LoadingSpinnerComponent } from '../loading-spinner/loading-spinner.component';
 @Component({
   selector: 'app-browse',
   standalone: true,
@@ -15,13 +16,11 @@ import { NgxSpinnerComponent, NgxSpinnerService } from 'ngx-spinner';
     RouterLink,
     HttpClientModule,
     GameCardComponent,
-    NgxSpinnerComponent,
+    LoadingSpinnerComponent,
   ],
   templateUrl: './browse.component.html',
   styleUrl: './browse.component.scss',
-  providers: [
-    // NgxSpinnerService
-  ],
+  providers: [],
 })
 export class BrowseComponent implements OnInit {
   listedGames: Game[] = [];
@@ -34,11 +33,11 @@ export class BrowseComponent implements OnInit {
   constructor(
     private gamesService: GamesService,
     public menuFunctionalitiesService: MenuFunctionalitiesService,
-    public spinner: NgxSpinnerService,
+    public spinner: LoadingSpinnerService,
   ) {}
 
   ngOnInit(): void {
-    this.spinner.show();
+    this.spinner.showLoadingSpinner();
 
     this.searchSubscription =
       this.menuFunctionalitiesService.searchSubject.subscribe((value) => {
@@ -73,10 +72,10 @@ export class BrowseComponent implements OnInit {
           game.liked = true;
         }
       });
-      setTimeout(() => {
-        this.spinner.hide();
-      }, 300);
     }
+    setTimeout(() => {
+      this.spinner.hideLoadingSpinner();
+    }, 400);
   }
 
   async loadSearchedGames(): Promise<void> {

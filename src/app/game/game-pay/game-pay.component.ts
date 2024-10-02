@@ -16,6 +16,8 @@ import { GamesService } from '../../games.service';
 import { AppComponent } from '../../app.component';
 import { PayCreditFormComponent } from './pay-credit-form/pay-credit-form.component';
 import { PayDebitFormComponent } from './pay-debit-form/pay-debit-form.component';
+import { LoadingSpinnerComponent } from '../../loading-spinner/loading-spinner.component';
+import { LoadingSpinnerService } from '../../loading-spinner.service';
 
 @Component({
   selector: 'game-pay',
@@ -26,12 +28,16 @@ import { PayDebitFormComponent } from './pay-debit-form/pay-debit-form.component
     ReactiveFormsModule,
     PayCreditFormComponent,
     PayDebitFormComponent,
+    LoadingSpinnerComponent,
   ],
   templateUrl: './game-pay.component.html',
   styleUrl: './game-pay.component.scss',
 })
 export class GamePayComponent {
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    public spinner: LoadingSpinnerService,
+  ) {}
   public namedGame: Game | null = null;
   private gamesService = inject(GamesService);
   private route: ActivatedRoute = inject(ActivatedRoute);
@@ -48,6 +54,7 @@ export class GamePayComponent {
   });
 
   async ngOnInit(): Promise<void> {
+    this.spinner.showLoadingSpinner();
     const gameName: string = this.route.snapshot.paramMap.get('name')!;
     this.observableGame = this.gamesService.getGameByName(gameName);
     this.listedGame = await lastValueFrom(this.observableGame);
@@ -55,6 +62,9 @@ export class GamePayComponent {
     this.form = this.formBuilder.group({
       method: ['', Validators.required],
     });
+    setTimeout(() => {
+      this.spinner.hideLoadingSpinner();
+    }, 300);
   }
 
   public successfulPurchase() {

@@ -3,11 +3,13 @@ import { RouterLink } from '@angular/router';
 import { Game } from '../../game.dto';
 import { GamesService } from './../../games.service';
 import { AsyncPipe, NgClass } from '@angular/common';
+import { LoadingSpinnerService } from '../../loading-spinner.service';
+import { NgxSpinnerComponent } from 'ngx-spinner';
 
 @Component({
   selector: 'carousel',
   standalone: true,
-  imports: [RouterLink, AsyncPipe, NgClass],
+  imports: [RouterLink, AsyncPipe, NgClass, NgxSpinnerComponent],
   templateUrl: './carousel.component.html',
   styleUrl: './carousel.component.scss',
 })
@@ -17,7 +19,10 @@ export class CarouselComponent implements OnInit {
   private timeoutId: any;
   private observer: IntersectionObserver | null = null;
 
-  constructor(public gamesService: GamesService) {}
+  constructor(
+    public gamesService: GamesService,
+    public spinner: LoadingSpinnerService,
+  ) {}
 
   ngOnInit(): void {
     this.getCarousel();
@@ -34,6 +39,7 @@ export class CarouselComponent implements OnInit {
   }
 
   async getCarousel(): Promise<void> {
+    this.spinner.showLoadingSpinner();
     const carousel = globalThis.document?.querySelector('#carousel');
     if (carousel) {
       const observer = new IntersectionObserver((entries) => {
@@ -41,10 +47,13 @@ export class CarouselComponent implements OnInit {
           if (this.games.length) {
             this.alternateGame(this.games[0]);
             this.selectGame(this.games[0]);
+            setTimeout(() => {
+              this.spinner.hideLoadingSpinner();
+            }, 100);
           } else if (!this.games.length) {
             setTimeout(() => {
               this.getCarousel();
-            }, 1000);
+            }, 400);
           }
         });
       });

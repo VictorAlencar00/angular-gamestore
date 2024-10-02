@@ -7,6 +7,8 @@ import { GameCardComponent } from '../game-card/game-card.component';
 import { Game } from './../game.dto';
 import { CarouselComponent } from './carousel/carousel.component';
 import { GamesService } from '../games.service';
+// import { LoadingSpinnerService } from '../loading-spinner.service';
+import { LoadingSpinnerComponent } from '../loading-spinner/loading-spinner.component';
 
 @Component({
   selector: 'discover-component',
@@ -16,6 +18,7 @@ import { GamesService } from '../games.service';
     HttpClientModule,
     RouterModule,
     GameCardComponent,
+    LoadingSpinnerComponent,
   ],
   templateUrl: './discover.component.html',
   styleUrl: './discover.component.scss',
@@ -27,10 +30,14 @@ export class DiscoverComponent implements OnInit {
   sportsGames: Game[] = [];
   shouldShowLikeButton: boolean = false;
 
-  constructor(private gamesService: GamesService) {}
+  constructor(
+    private gamesService: GamesService,
+    // public spinner: LoadingSpinnerService,
+  ) {}
 
   ngOnInit(): void {
     this.loadGames();
+    // this.spinner.showLoadingSpinner();
   }
 
   async loadGames(): Promise<void> {

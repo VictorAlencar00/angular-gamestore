@@ -1,3 +1,4 @@
+import { LoadingSpinnerService } from './../loading-spinner.service';
 import { Component, OnInit } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 
@@ -5,21 +6,26 @@ import { GamesService } from '../games.service';
 import { Game } from '../game.dto';
 import { RouterLink } from '@angular/router';
 import { GameCardComponent } from '../game-card/game-card.component';
+import { LoadingSpinnerComponent } from '../loading-spinner/loading-spinner.component';
 
 @Component({
   selector: 'app-wishlist',
   standalone: true,
-  imports: [RouterLink, GameCardComponent],
+  imports: [RouterLink, GameCardComponent, LoadingSpinnerComponent],
   templateUrl: './wishlist.component.html',
   styleUrl: './wishlist.component.scss',
 })
 export class WishlistComponent implements OnInit {
-  constructor(private gamesService: GamesService) {}
+  constructor(
+    private gamesService: GamesService,
+    public spinner: LoadingSpinnerService,
+  ) {}
   shouldShowLikeButton: boolean = false;
   public games: Game[] = [];
 
   ngOnInit(): void {
     this.loadLikedGames();
+    this.spinner.showLoadingSpinner();
   }
 
   async loadLikedGames() {
@@ -32,6 +38,9 @@ export class WishlistComponent implements OnInit {
     this.games.forEach((game) => {
       game.liked = true;
     });
+    setTimeout(() => {
+      this.spinner.hideLoadingSpinner();
+    }, 300);
   }
 
   likeGame(index: number) {
