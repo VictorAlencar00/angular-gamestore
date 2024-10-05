@@ -5,10 +5,11 @@
         {{ namedGame?.name }}
       </h1>
       <div class="md:flex md:justify-between gap-8">
+        <!-- class="rounded 1/4 md:w-3/5 lg:w-4/6 xl:w-9/12 object-cover" -->
         <img
-          class="rounded 1/4 md:w-3/5 lg:w-4/6 xl:w-9/12 object-cover"
+          class="rounded 1/4 md:w-3/5 lg:w-4/6 xl:w-9/12 object-cover game-cover"
           src="{{ namedGame?.horizontalsrc }}"
-          alt=""
+          alt="Game cover"
         />
         <div
           class="flex justify-end items-center md:w-2/5 gap-4 relative flex-col-reverse md:flex-col"
@@ -42,12 +43,12 @@
 
             <button
               [routerLink]="['pay']"
-              class="w-full h-12 bg-blue-500 rounded text-white text-lg px-4"
+              class="w-full h-12 rounded transitio text-white text-lg px-4 buy-button"
             >
               Buy Now
             </button>
             <button
-              class="w-full h-12 rounded bg-gray-900 border border-white px-4"
+              class="w-full h-12 rounded bg-gray-900 bg-zinc-700 hover:bg-zinc-600 transition text-lg px-4 wishlist-button"
             >
               Add to Wishlist
             </button>

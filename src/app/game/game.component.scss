@@ -10,3 +10,16 @@
     max-width: 100%;
   }
 }
+
+.buy-button {
+  background-color: #2563eb;
+  transition: 150ms ease-in-out;
+  &:hover {
+    background-color: #3b82f6;
+  }
+}
+
+.wishlist-button {
+  transition: 150ms ease-in-out;
+  color: white;
+}
