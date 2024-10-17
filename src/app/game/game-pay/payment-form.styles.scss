@@ -1,0 +1,29 @@
+.purchaseInfoInput {
+  color: white;
+  height: 2.1rem;
+  border-radius: 0.25rem;
+  background-color: #3f3f46;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  padding: 4px;
+  border: 2px solid transparent;
+  option {
+    color: white;
+    background-color: #3f3f46;
+  }
+}
+
+.purchaseInfoInput:focus {
+  outline: none;
+  border: 2px solid #007bff;
+}
+
+.purchaseInfoLabel {
+  font-size: 18px;
+  line-height: 20px;
+  color: rgb(228 228 231);
+}
+
+.disabled {
+  pointer-events: none;
+  background-color: rgba(128, 128, 128, 0.333);
+}

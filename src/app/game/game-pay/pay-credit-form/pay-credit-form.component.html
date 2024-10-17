@@ -1,42 +1,107 @@
 <form
-  class="flex flex-col gap-1"
+  class="flex flex-col gap-2"
   [formGroup]="creditForm"
   (ngSubmit)="onSubmitForm()"
+  id="creditForm"
 >
-  <label class="purchaseInfoLabel" for="">CPF:</label>
+  <h3 class="pt-2 mt-2">
+    <strong class="text-xl">Payment Details:</strong>
+  </h3>
+
+  @if (personalInfoStep) {
+    <label for="" class="purchaseInfoLabel">Country or Region</label>
+    <select
+      name="Country"
+      id=""
+      class="text-black purchaseInfoInput"
+      formControlName="country"
+    >
+      @for (country of countries; track $index) {
+        <option value="" class="text-black">
+          {{ country.name.common }}
+          <img [src]="country.flags.png" alt="" />
+        </option>
+      }
+    </select>
+    <label class="purchaseInfoLabel" for="">First name</label>
+    <input class="purchaseInfoInput" formControlName="firstName" type="text" />
+    <label class="purchaseInfoLabel" for="">Last name</label>
+    <input class="purchaseInfoInput" formControlName="lastName" type="text" />
+    <label class="purchaseInfoLabel" for="">Adress</label>
+    <input class="purchaseInfoInput" formControlName="adress" type="text" />
+    <label class="purchaseInfoLabel" for="">City</label>
+    <input class="purchaseInfoInput" formControlName="city" type="text" />
+    <label class="purchaseInfoLabel" for="">CEP</label>
+    <input
+      class="purchaseInfoInput"
+      formControlName="postalCode"
+      type="number"
+    />
+    <div class="flex flex-col">
+      <button
+        [ngClass]="{ disabled: !arePersonalInfoValid() }"
+        class="bg-blue-500 text-white text-lg rounded my-2 py-1 text-center transition"
+      >
+        Proceed to card info
+      </button>
+      <a
+        class="bg-zinc-700 hover:bg-zinc-600 text-white text-lg rounded my-2 py-1 text-center"
+        href="/"
+        >Cancel</a
+      >
+    </div>
+  }
+
+  <!-- <label class="purchaseInfoLabel" for="">CPF:</label>
   <input
     class="purchaseInfoInput"
     formControlName="cpf"
     title="Your CPF"
     required
     (input)="onCpfInput($event)"
-  />
-  <label class="purchaseInfoLabel" for="">Card Number:</label>
-  <input class="purchaseInfoInput" formControlName="cardNumber" type="number" />
-  <label class="purchaseInfoLabel" for="">Expire Date:</label>
-  <input class="purchaseInfoInput" formControlName="expireDate" type="date" />
-  <label for="">CVV Number:</label>
-  <input
-    class="purchaseInfoInput"
-    formControlName="cvv"
-    type="text"
-    required=""
-    pattern="\d{3,4}"
-  />
-  <div class="flex flex-col">
-    <a
-      [ngClass]="{ disabled: !creditForm.valid }"
-      class="bg-blue-500 text-white text-lg rounded my-2 py-1 text-center transition"
-      type="submit"
-      [routerLink]="['confirmation']"
-      routerLinkActive="router-link-active"
-    >
-      Confirm Payment
-    </a>
-    <a
-      class="bg-zinc-700 hover:bg-zinc-600 text-white text-lg rounded my-2 py-1 text-center"
-      href="/"
-      >Cancel</a
-    >
-  </div>
+  /> -->
+  @if (cardInfoStep) {
+    <label class="purchaseInfoLabel" for="">Card Number:</label>
+    <input
+      class="purchaseInfoInput"
+      formControlName="cardNumber"
+      type="number"
+    />
+    <label class="purchaseInfoLabel" for="">Expire Date:</label>
+    <input
+      class="purchaseInfoInput bg-zinc-700"
+      formControlName="expireDate"
+      type="date"
+    />
+    <label for="">CVV Number:</label>
+    <input
+      class="purchaseInfoInput"
+      formControlName="cvv"
+      type="text"
+      required=""
+      pattern="\d{3,4}"
+    />
+
+    <div class="flex flex-col">
+      <a
+        [ngClass]="{ disabled: !creditForm.valid }"
+        class="bg-blue-500 text-white text-lg rounded my-2 py-1 text-center transition"
+        type="submit"
+        [routerLink]="['confirmation']"
+        routerLinkActive="router-link-active"
+      >
+        Confirm Payment
+      </a>
+      <a
+        class="bg-zinc-700 hover:bg-zinc-600 text-white text-lg rounded my-2 py-1 text-center"
+        href="/"
+        >Cancel</a
+      >
+    </div>
+  }
 </form>
+
+<!-- <span class="text-yellow-400"
+  >No real credit or debit card information is needed, and any other details
+  requested are just to complete the forms for simulation purposes.</span
+> -->
