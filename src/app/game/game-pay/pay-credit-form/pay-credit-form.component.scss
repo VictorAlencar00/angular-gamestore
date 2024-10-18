@@ -1,5 +1,12 @@
 #creditForm {
-  // @media  and min-width {
-  width: 450px;
-  // }
+  width: 80vw;
+  @media screen and (min-width: 520px) {
+    width: 450px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 280px;
+  }
+  @media screen and (min-width: 900px) {
+    width: 450px;
+  }
 }

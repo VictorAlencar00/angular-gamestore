@@ -1,8 +1,13 @@
-.game-pay {
-  @media screen and (min-width: 640px) {
-    min-height: 473px;
-    height: 473px;
-    max-height: 520px;
+.pay-form {
+  width: 80vw;
+  @media screen and (min-width: 520px) {
+    width: 450px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 280px;
+  }
+  @media screen and (min-width: 900px) {
+    width: 450px;
   }
 }
 
