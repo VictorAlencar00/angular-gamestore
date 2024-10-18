@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  ActivatedRoute,
-  RouterOutlet,
-  Router,
-  NavigationEnd,
-} from '@angular/router';
+import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 
 import { MenuComponent } from './menu/menu.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -20,25 +15,18 @@ import { MobileMenuComponent } from './mobile-menu/mobile-menu.component';
 })
 export class AppComponent implements OnInit {
   title = 'gamestore';
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-  ) {}
+  constructor(private router: Router) {}
   public showMenu: boolean = true;
 
   ngOnInit(): void {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
-        let currentRoute = this.route;
-        while (currentRoute.firstChild) {
-          currentRoute.firstChild.url.subscribe((urlSegments) => {
-            const url = urlSegments.map((segment) => segment.path).join('/');
-            if (url.includes('/pay')) {
-              this.showMenu = false;
-            }
-          });
-          currentRoute = currentRoute.firstChild;
+        const currentUrl = this.router.url;
+        if (currentUrl.includes('/pay')) {
+          this.showMenu = false;
+        } else {
+          this.showMenu = true;
         }
       });
   }

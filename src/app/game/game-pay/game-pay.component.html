@@ -11,7 +11,7 @@
         <select
           name="paymentMethod"
           id="paymentMethod"
-          class="text-black h-8 rounded"
+          class="text-black purchaseInfoInput"
           formControlName="method"
           (change)="chosenPaymentMethod(form.get('method')?.value)"
         >
@@ -22,7 +22,7 @@
         <div class="flex flex-col">
           <a
             class="bg-zinc-700 hover:bg-zinc-600 transition text-white text-lg rounded my-2 py-1 text-center"
-            href="/"
+            [routerLink]="['..']"
             >Cancel</a
           >
         </div>

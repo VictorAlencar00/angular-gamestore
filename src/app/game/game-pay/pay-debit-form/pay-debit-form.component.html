@@ -46,20 +46,12 @@
       </button>
       <a
         class="bg-zinc-700 hover:bg-zinc-600 text-white text-lg rounded my-2 py-1 text-center"
-        href="/"
+        [routerLink]="['..']"
         >Cancel</a
       >
     </div>
   }
 
-  <!-- <label class="purchaseInfoLabel" for="">CPF:</label>
-  <input
-    class="purchaseInfoInput"
-    formControlName="cpf"
-    title="Your CPF"
-    required
-    (input)="onCpfInput($event)"
-  /> -->
   @if (cardInfoStep) {
     <label class="purchaseInfoLabel" for="">Card Number:</label>
     <input
@@ -94,7 +86,7 @@
       </a>
       <a
         class="bg-zinc-700 hover:bg-zinc-600 text-white text-lg rounded my-2 py-1 text-center"
-        href="/"
+        [routerLink]="['..']"
         >Cancel</a
       >
     </div>

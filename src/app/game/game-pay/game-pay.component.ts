@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Game } from '../../game.dto';
 import { GameComponent } from '../game.component';
 import { Component, inject } from '@angular/core';
@@ -9,7 +9,6 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-// import { EventEmitter, Output} from '@angular/core';
 import { Observable, lastValueFrom } from 'rxjs';
 
 import { GamesService } from '../../games.service';
@@ -29,9 +28,10 @@ import { LoadingSpinnerService } from '../../loading-spinner.service';
     PayCreditFormComponent,
     PayDebitFormComponent,
     LoadingSpinnerComponent,
+    RouterLink,
   ],
   templateUrl: './game-pay.component.html',
-  styleUrl: './game-pay.component.scss',
+  styleUrls: ['./game-pay.component.scss', './payment-form.styles.scss'],
 })
 export class GamePayComponent {
   constructor(
@@ -70,6 +70,4 @@ export class GamePayComponent {
   public successfulPurchase() {
     alert('it worked');
   }
-
-  // @Output() valueChange = new EventEmitter<boolean>();
 }
