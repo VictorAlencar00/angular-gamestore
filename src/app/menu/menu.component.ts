@@ -16,7 +16,9 @@ export class MenuComponent implements OnInit {
     public router: Router,
   ) {}
   ngOnInit(): void {
-    window.addEventListener('resize', () => this.handleResize());
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', () => this.handleResize());
+    }
   }
 
   onInputChange(event: Event) {
