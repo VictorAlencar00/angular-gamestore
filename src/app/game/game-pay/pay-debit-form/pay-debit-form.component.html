@@ -14,7 +14,7 @@
       name="Country"
       id=""
       class="text-black purchaseInfoInput"
-      formControlName="country"
+      formControlName="countries"
     >
       @for (country of countries; track $index) {
         <option value="" class="text-black">
@@ -46,7 +46,7 @@
       </button>
       <a
         class="bg-zinc-700 hover:bg-zinc-600 text-white text-lg rounded my-2 py-1 text-center"
-        [routerLink]="['..']"
+        (click)="reloadPage()"
         >Cancel</a
       >
     </div>
@@ -84,11 +84,12 @@
       >
         Confirm Payment
       </a>
-      <a
+      <button
         class="bg-zinc-700 hover:bg-zinc-600 text-white text-lg rounded my-2 py-1 text-center"
-        [routerLink]="['..']"
-        >Cancel</a
+        (click)="returnToLastStep()"
       >
+        Return
+      </button>
     </div>
   }
 </form>

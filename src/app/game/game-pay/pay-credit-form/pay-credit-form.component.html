@@ -14,7 +14,7 @@
       name="Country"
       id=""
       class="text-black purchaseInfoInput"
-      formControlName="country"
+      formControlName="countries"
     >
       @for (country of countries; track $index) {
         <option value="" class="text-black">
@@ -46,8 +46,8 @@
       </button>
       <a
         class="bg-zinc-700 hover:bg-zinc-600 text-white text-lg rounded my-2 py-1 text-center"
-        [routerLink]="['..']"
-        >Cancel</a
+        (click)="reloadPage()"
+        >Return</a
       >
     </div>
   }
@@ -75,20 +75,20 @@
     />
 
     <div class="flex flex-col">
-      <a
+      <button
         [ngClass]="{ disabled: !creditForm.valid }"
         class="bg-blue-500 text-white text-lg rounded my-2 py-1 text-center transition"
         type="submit"
-        [routerLink]="['confirmation']"
         routerLinkActive="router-link-active"
       >
         Confirm Payment
-      </a>
-      <a
+      </button>
+      <button
         class="bg-zinc-700 hover:bg-zinc-600 text-white text-lg rounded my-2 py-1 text-center"
-        [routerLink]="['..']"
-        >Cancel</a
+        (click)="returnToLastStep()"
       >
+        Return
+      </button>
     </div>
   }
 </form>

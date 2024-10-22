@@ -6,7 +6,6 @@ import {
   Validators,
 } from '@angular/forms';
 
-import { CpfValidationService } from '../cpf-validation.service';
 import { Router, RouterLink } from '@angular/router';
 import { NgClass } from '@angular/common';
 import { CountriesService } from '../countries.service';
@@ -29,7 +28,6 @@ export class PayDebitFormComponent implements OnInit {
   cardInfoStep: Boolean = false;
 
   countries: any[] = [];
-  cpfValidation = inject(CpfValidationService);
 
   paymentMethodChosen: string = '';
 
@@ -70,20 +68,29 @@ export class PayDebitFormComponent implements OnInit {
       return control && control.valid;
     });
   }
+
   async onSubmitForm(): Promise<void> {
     if (this.personalInfoStep && !this.cardInfoStep) {
       if (this.arePersonalInfoValid()) {
-        this.nextStep();
+        this.changeStep();
       }
       return;
     }
-    if (!this.debitForm.valid) {
-      alert('Purchase went wrong');
+    if (this.cardInfoStep && !this.personalInfoStep) {
+      this.changeStep();
     }
   }
 
-  nextStep() {
+  changeStep() {
     this.personalInfoStep = !this.personalInfoStep;
     this.cardInfoStep = !this.cardInfoStep;
+  }
+
+  returnToLastStep() {
+    this.onSubmitForm();
+  }
+
+  reloadPage() {
+    window.location.reload();
   }
 }
