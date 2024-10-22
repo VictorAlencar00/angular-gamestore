@@ -5,6 +5,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { ChangeDetectorRef } from '@angular/core';
 
 import { Router, RouterLink } from '@angular/router';
 import { NgClass } from '@angular/common';
@@ -25,6 +26,7 @@ export class PayCreditFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     public router: Router,
     private countriesService: CountriesService,
+    private cdr: ChangeDetectorRef,
   ) {}
 
   personalInfoStep: Boolean = true;
@@ -85,6 +87,7 @@ export class PayCreditFormComponent implements OnInit {
   changeStep() {
     this.personalInfoStep = !this.personalInfoStep;
     this.cardInfoStep = !this.cardInfoStep;
+    this.cdr.detectChanges();
   }
 
   returnToLastStep() {
