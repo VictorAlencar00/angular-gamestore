@@ -35,7 +35,8 @@
     <input
       class="purchaseInfoInput"
       formControlName="postalCode"
-      type="number"
+      type="text"
+      appFormatPostalCode
     />
     <div class="flex flex-col">
       <button
@@ -57,7 +58,8 @@
     <input
       class="purchaseInfoInput"
       formControlName="cardNumber"
-      type="number"
+      appCardGroupFormat
+      type="text"
     />
     <label class="purchaseInfoLabel" for="">Expire Date:</label>
     <input
@@ -71,7 +73,7 @@
       formControlName="cvv"
       type="text"
       required=""
-      pattern="\d{3,4}"
+      pattern="\d{3}"
     />
 
     <div class="flex flex-col">

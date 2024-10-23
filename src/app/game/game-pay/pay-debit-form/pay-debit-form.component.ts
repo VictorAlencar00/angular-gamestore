@@ -8,12 +8,21 @@ import {
 
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { NgClass } from '@angular/common';
+
 import { CountriesService } from '../countries.service';
+import { CardGroupFormatDirective } from '../card-format.directive';
+import { FormatPostalCodeDirective } from '../postal-code-format.directive';
 
 @Component({
   selector: 'pay-debit-form',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink, NgClass],
+  imports: [
+    ReactiveFormsModule,
+    RouterLink,
+    NgClass,
+    CardGroupFormatDirective,
+    FormatPostalCodeDirective,
+  ],
   templateUrl: './pay-debit-form.component.html',
   styleUrls: ['./pay-debit-form.component.scss', '../payment-form.styles.scss'],
 })
@@ -43,7 +52,10 @@ export class PayDebitFormComponent implements OnInit {
       this.countries = data;
     });
     this.debitForm = this.formBuilder.group({
-      cardNumber: ['', [Validators.required, Validators.minLength(3)]],
+      cardNumber: [
+        '',
+        [Validators.required, Validators.pattern(/^(?:\d{4} ){3}\d{4}$/)],
+      ],
       expireDate: ['', Validators.required],
       cvv: ['', Validators.required],
       firstName: ['', Validators.required],
@@ -78,7 +90,9 @@ export class PayDebitFormComponent implements OnInit {
       return;
     }
     if (this.cardInfoStep && !this.personalInfoStep) {
-      this.router.navigate(['confirmation'], { relativeTo: this.route });
+      if (this.debitForm.valid) {
+        this.router.navigate(['confirmation'], { relativeTo: this.route });
+      }
       return;
     }
   }

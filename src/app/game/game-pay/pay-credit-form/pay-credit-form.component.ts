@@ -6,15 +6,23 @@ import {
   Validators,
 } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
-
 import { Router, RouterLink, ActivatedRoute } from '@angular/router';
 import { NgClass } from '@angular/common';
+
 import { CountriesService } from '../countries.service';
+import { CardGroupFormatDirective } from '../card-format.directive';
+import { FormatPostalCodeDirective } from '../postal-code-format.directive';
 
 @Component({
   selector: 'pay-credit-form',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink, NgClass],
+  imports: [
+    ReactiveFormsModule,
+    RouterLink,
+    NgClass,
+    CardGroupFormatDirective,
+    FormatPostalCodeDirective,
+  ],
   templateUrl: './pay-credit-form.component.html',
   styleUrls: [
     './pay-credit-form.component.scss',
@@ -47,7 +55,10 @@ export class PayCreditFormComponent implements OnInit {
       this.countries = data;
     });
     this.creditForm = this.formBuilder.group({
-      cardNumber: ['', [Validators.required, Validators.minLength(3)]],
+      cardNumber: [
+        '',
+        [Validators.required, Validators.pattern(/^(?:\d{4} ){3}\d{4}$/)],
+      ],
       expireDate: ['', Validators.required],
       cvv: ['', Validators.required],
       firstName: ['', Validators.required],
@@ -82,7 +93,9 @@ export class PayCreditFormComponent implements OnInit {
       return;
     }
     if (this.cardInfoStep && !this.personalInfoStep) {
-      this.router.navigate(['confirmation'], { relativeTo: this.route });
+      if (this.creditForm.valid) {
+        this.router.navigate(['confirmation'], { relativeTo: this.route });
+      }
       return;
     }
   }
