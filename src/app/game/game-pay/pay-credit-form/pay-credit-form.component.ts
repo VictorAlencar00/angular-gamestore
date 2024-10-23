@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
 
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, ActivatedRoute } from '@angular/router';
 import { NgClass } from '@angular/common';
 import { CountriesService } from '../countries.service';
 
@@ -27,6 +27,7 @@ export class PayCreditFormComponent implements OnInit {
     public router: Router,
     private countriesService: CountriesService,
     private cdr: ChangeDetectorRef,
+    private route: ActivatedRoute,
   ) {}
 
   personalInfoStep: Boolean = true;
@@ -81,6 +82,8 @@ export class PayCreditFormComponent implements OnInit {
       return;
     }
     if (this.cardInfoStep && !this.personalInfoStep) {
+      this.router.navigate(['confirmation'], { relativeTo: this.route });
+      return;
     }
   }
 

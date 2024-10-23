@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { NgClass } from '@angular/common';
 import { CountriesService } from '../countries.service';
 
@@ -22,13 +22,14 @@ export class PayDebitFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     public router: Router,
     private countriesService: CountriesService,
+    private cdr: ChangeDetectorRef,
+    private route: ActivatedRoute,
   ) {}
 
   personalInfoStep: Boolean = true;
   cardInfoStep: Boolean = false;
 
   countries: any[] = [];
-
   paymentMethodChosen: string = '';
 
   chosenPaymentMethod(method: string) {
@@ -77,17 +78,19 @@ export class PayDebitFormComponent implements OnInit {
       return;
     }
     if (this.cardInfoStep && !this.personalInfoStep) {
-      this.changeStep();
+      this.router.navigate(['confirmation'], { relativeTo: this.route });
+      return;
     }
   }
 
   changeStep() {
     this.personalInfoStep = !this.personalInfoStep;
     this.cardInfoStep = !this.cardInfoStep;
+    this.cdr.detectChanges();
   }
 
   returnToLastStep() {
-    this.onSubmitForm();
+    this.changeStep();
   }
 
   reloadPage() {
