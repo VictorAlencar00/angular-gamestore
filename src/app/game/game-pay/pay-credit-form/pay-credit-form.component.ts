@@ -65,7 +65,7 @@ export class PayCreditFormComponent implements OnInit {
       lastName: ['', Validators.required],
       city: ['', Validators.required],
       adress: ['', Validators.required],
-      postalCode: ['', Validators.required],
+      postalCode: ['', [Validators.required, Validators.minLength(4)]],
     });
   }
 
