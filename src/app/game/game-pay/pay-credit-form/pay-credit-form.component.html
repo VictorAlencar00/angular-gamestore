@@ -23,31 +23,56 @@
         </option>
       }
     </select>
+
     <label class="purchaseInfoLabel" for="">First name</label>
-    <input class="purchaseInfoInput" formControlName="firstName" type="text" />
+    <input
+      class="purchaseInfoInput"
+      formControlName="firstName"
+      type="text"
+      (change)="validateAllPurchaseInfoInputs()"
+    />
+
     <label class="purchaseInfoLabel" for="">Last name</label>
-    <input class="purchaseInfoInput" formControlName="lastName" type="text" />
+    <input
+      class="purchaseInfoInput"
+      formControlName="lastName"
+      type="text"
+      (change)="validateAllPurchaseInfoInputs()"
+    />
+
     <label class="purchaseInfoLabel" for="">Adress</label>
-    <input class="purchaseInfoInput" formControlName="adress" type="text" />
+    <input
+      class="purchaseInfoInput"
+      formControlName="adress"
+      type="text"
+      (change)="validateAllPurchaseInfoInputs()"
+    />
+
     <label class="purchaseInfoLabel" for="">City</label>
-    <input class="purchaseInfoInput" formControlName="city" type="text" />
+    <input
+      class="purchaseInfoInput"
+      formControlName="city"
+      type="text"
+      (change)="validateAllPurchaseInfoInputs()"
+    />
+
     <label class="purchaseInfoLabel" for="">Postal Code</label>
     <input
       class="purchaseInfoInput"
+      id="postalCodeInput"
       formControlName="postalCode"
       type="text"
       appFormatPostalCode
+      (change)="isPostalCodeValid()"
     />
+
     @if (
       creditForm.get("postalCode")?.invalid &&
-      (creditForm.get("postalCode")?.touched ||
-        creditForm.get("postalCode")?.dirty)
+      creditForm.get("postalCode")?.dirty
     ) {
-      <div>
-        <span class="text-red-500"
-          >Postal code must include at least 4 characters.</span
-        >
-      </div>
+      <span class="color-red"
+        >Postal code must include at least 4 characters.</span
+      >
     }
 
     <div class="flex flex-col">
@@ -72,13 +97,24 @@
       formControlName="cardNumber"
       appCardGroupFormat
       type="text"
+      (change)="validateAllPurchaseInfoInputs()"
     />
+
+    @if (
+      creditForm.get("cardNumber")?.invalid &&
+      creditForm.get("cardNumber")?.dirty
+    ) {
+      <span class="color-red">Card number must contain 8 numbers.</span>
+    }
+
     <label class="purchaseInfoLabel" for="">Expire Date:</label>
     <input
       class="purchaseInfoInput bg-zinc-700"
       formControlName="expireDate"
       type="date"
+      (change)="validateAllPurchaseInfoInputs()"
     />
+
     <label for="">CVV Number:</label>
     <input
       class="purchaseInfoInput"
@@ -86,7 +122,12 @@
       type="text"
       required=""
       pattern="\d{3}"
+      (change)="validateAllPurchaseInfoInputs()"
     />
+
+    @if (creditForm.get("cvv")?.invalid && creditForm.get("cvv")?.dirty) {
+      <span class="color-red">CVV must contain 3 characters.</span>
+    }
 
     <div class="flex flex-col">
       <button

@@ -10,11 +10,19 @@
     color: white;
     background-color: #3f3f46;
   }
+  &:focus {
+    outline: none;
+    border: 2px solid #007bff;
+  }
 }
 
-.purchaseInfoInput:focus {
+.incorrectInput {
   outline: none;
-  border: 2px solid #007bff;
+  border: 2px solid red;
+}
+
+.color-red {
+  color: red;
 }
 
 .purchaseInfoLabel {

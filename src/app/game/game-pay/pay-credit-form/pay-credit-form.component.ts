@@ -80,23 +80,70 @@ export class PayCreditFormComponent implements OnInit {
 
     return requiredFields.every((field) => {
       const control = this.creditForm.get(field);
-      // Certifique-se de que o controle existe e está válido
       return control && control.valid;
     });
   }
 
-  async onSubmitForm(): Promise<void> {
-    if (this.personalInfoStep && !this.cardInfoStep) {
-      if (this.arePersonalInfoValid()) {
-        this.changeStep();
-      }
+  areCardInfoValid(): boolean {
+    const requiredFields = ['cardNumber', 'expireDate', 'cvv'];
+
+    return requiredFields.every((field) => {
+      const control = this.creditForm.get(field);
+      return control && control.valid;
+    });
+  }
+
+  async isPostalCodeValid(): Promise<void> {
+    const postalCodeControl = this.creditForm.get('postalCode');
+    const postalCodeInput = document.querySelector('#postalCodeInput');
+
+    if (!postalCodeControl) {
       return;
     }
-    if (this.cardInfoStep && !this.personalInfoStep) {
-      if (this.creditForm.valid) {
-        this.router.navigate(['confirmation'], { relativeTo: this.route });
+
+    if (
+      postalCodeControl.invalid &&
+      (postalCodeControl.touched || postalCodeControl.dirty)
+    ) {
+      postalCodeInput?.classList.add('incorrectInput');
+    } else postalCodeInput?.classList.remove('incorrectInput');
+  }
+
+  async validateAllPurchaseInfoInputs(
+    overrideDirtyCheck: boolean = false,
+  ): Promise<void> {
+    const inputs = document.querySelectorAll('.purchaseInfoInput');
+
+    inputs.forEach((input) => {
+      const inputName = (input as HTMLInputElement).getAttribute(
+        'formControlName',
+      );
+      if (!inputName) {
+        return;
       }
+
+      const control = this.creditForm.get(inputName);
+      if (control) {
+        if (control.invalid && (control.dirty || overrideDirtyCheck)) {
+          input.classList.add('incorrectInput');
+        } else if (!control.invalid && !control.dirty) {
+          input.classList.remove('incorrectInput');
+        }
+      }
+    });
+  }
+
+  async onSubmitForm(): Promise<void> {
+    this.validateAllPurchaseInfoInputs(true);
+    if (
+      this.personalInfoStep &&
+      !this.cardInfoStep &&
+      this.arePersonalInfoValid()
+    ) {
+      this.changeStep();
       return;
+    } else if (this.cardInfoStep && this.areCardInfoValid()) {
+      this.router.navigate(['confirmation'], { relativeTo: this.route });
     }
   }
 
