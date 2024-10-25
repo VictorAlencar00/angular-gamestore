@@ -126,7 +126,7 @@ export class PayCreditFormComponent implements OnInit {
       if (control) {
         if (control.invalid && (control.dirty || overrideDirtyCheck)) {
           input.classList.add('incorrectInput');
-        } else if (!control.invalid && !control.dirty) {
+        } else if (!control.invalid) {
           input.classList.remove('incorrectInput');
         }
       }
