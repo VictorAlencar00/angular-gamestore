@@ -1,4 +1,4 @@
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Game } from '../../game.dto';
 import { GameComponent } from '../game.component';
 import { Component, inject } from '@angular/core';
@@ -10,11 +10,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { Observable, lastValueFrom } from 'rxjs';
-
 import { GamesService } from '../../games.service';
 import { AppComponent } from '../../app.component';
-import { PayCreditFormComponent } from './pay-credit-form/pay-credit-form.component';
-import { PayDebitFormComponent } from './pay-debit-form/pay-debit-form.component';
+import { PayCardFormComponent } from './pay-card-form/pay-card-form.component';
 import { LoadingSpinnerComponent } from '../../loading-spinner/loading-spinner.component';
 import { LoadingSpinnerService } from '../../loading-spinner.service';
 
@@ -25,8 +23,7 @@ import { LoadingSpinnerService } from '../../loading-spinner.service';
     GameComponent,
     AppComponent,
     ReactiveFormsModule,
-    PayCreditFormComponent,
-    PayDebitFormComponent,
+    PayCardFormComponent,
     LoadingSpinnerComponent,
     RouterLink,
   ],

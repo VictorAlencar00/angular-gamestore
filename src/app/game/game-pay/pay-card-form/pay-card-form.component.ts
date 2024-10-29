@@ -14,7 +14,7 @@ import { CardGroupFormatDirective } from '../card-format.directive';
 import { FormatPostalCodeDirective } from '../postal-code-format.directive';
 
 @Component({
-  selector: 'pay-credit-form',
+  selector: 'pay-card-form',
   standalone: true,
   imports: [
     ReactiveFormsModule,
@@ -23,13 +23,10 @@ import { FormatPostalCodeDirective } from '../postal-code-format.directive';
     CardGroupFormatDirective,
     FormatPostalCodeDirective,
   ],
-  templateUrl: './pay-credit-form.component.html',
-  styleUrls: [
-    './pay-credit-form.component.scss',
-    '../payment-form.styles.scss',
-  ],
+  templateUrl: './pay-card-form.component.html',
+  styleUrls: ['./pay-card-form.component.scss', '../payment-form.styles.scss'],
 })
-export class PayCreditFormComponent implements OnInit {
+export class PayCardFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public router: Router,
@@ -48,13 +45,13 @@ export class PayCreditFormComponent implements OnInit {
     this.paymentMethodChosen = method;
   }
 
-  creditForm!: FormGroup;
+  cardForm!: FormGroup;
 
   ngOnInit() {
     this.countriesService.getCountries().subscribe((data: any) => {
       this.countries = data;
     });
-    this.creditForm = this.formBuilder.group({
+    this.cardForm = this.formBuilder.group({
       cardNumber: [
         '',
         [Validators.required, Validators.pattern(/^(?:\d{4} ){3}\d{4}$/)],
@@ -79,7 +76,7 @@ export class PayCreditFormComponent implements OnInit {
     ];
 
     return requiredFields.every((field) => {
-      const control = this.creditForm.get(field);
+      const control = this.cardForm.get(field);
       return control && control.valid;
     });
   }
@@ -88,13 +85,13 @@ export class PayCreditFormComponent implements OnInit {
     const requiredFields = ['cardNumber', 'expireDate', 'cvv'];
 
     return requiredFields.every((field) => {
-      const control = this.creditForm.get(field);
+      const control = this.cardForm.get(field);
       return control && control.valid;
     });
   }
 
   async isPostalCodeValid(): Promise<void> {
-    const postalCodeControl = this.creditForm.get('postalCode');
+    const postalCodeControl = this.cardForm.get('postalCode');
     const postalCodeInput = document.querySelector('#postalCodeInput');
 
     if (!postalCodeControl) {
@@ -122,7 +119,7 @@ export class PayCreditFormComponent implements OnInit {
         return;
       }
 
-      const control = this.creditForm.get(inputName);
+      const control = this.cardForm.get(inputName);
       if (control) {
         if (control.invalid && (control.dirty || overrideDirtyCheck)) {
           input.classList.add('incorrectInput');

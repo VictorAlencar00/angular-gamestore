@@ -1,8 +1,8 @@
 <form
   class="flex flex-col gap-2"
-  [formGroup]="creditForm"
+  [formGroup]="cardForm"
   (ngSubmit)="onSubmitForm()"
-  id="creditForm"
+  id="cardForm"
 >
   <h3 class="pt-2 mt-2">
     <strong class="text-xl">Payment Details:</strong>
@@ -40,7 +40,7 @@
       (change)="validateAllPurchaseInfoInputs()"
     />
 
-    <label class="purchaseInfoLabel" for="">Adress</label>
+    <label class="purchaseInfoLabel" for="">Address</label>
     <input
       class="purchaseInfoInput"
       formControlName="adress"
@@ -67,8 +67,7 @@
     />
 
     @if (
-      creditForm.get("postalCode")?.invalid &&
-      creditForm.get("postalCode")?.dirty
+      cardForm.get("postalCode")?.invalid && cardForm.get("postalCode")?.dirty
     ) {
       <span class="color-red"
         >Postal code must include at least 4 characters.</span
@@ -101,10 +100,9 @@
     />
 
     @if (
-      creditForm.get("cardNumber")?.invalid &&
-      creditForm.get("cardNumber")?.dirty
+      cardForm.get("cardNumber")?.invalid && cardForm.get("cardNumber")?.dirty
     ) {
-      <span class="color-red">Card number must contain 8 numbers.</span>
+      <span class="color-red">Card number must contain 16 characters.</span>
     }
 
     <label class="purchaseInfoLabel" for="">Expire Date:</label>
@@ -125,13 +123,13 @@
       (change)="validateAllPurchaseInfoInputs()"
     />
 
-    @if (creditForm.get("cvv")?.invalid && creditForm.get("cvv")?.dirty) {
+    @if (cardForm.get("cvv")?.invalid && cardForm.get("cvv")?.dirty) {
       <span class="color-red">CVV must contain 3 characters.</span>
     }
 
     <div class="flex flex-col">
       <button
-        [ngClass]="{ disabled: !creditForm.valid }"
+        [ngClass]="{ disabled: !cardForm.valid }"
         class="bg-blue-500 text-white text-lg rounded my-2 py-1 text-center transition"
         type="submit"
       >
