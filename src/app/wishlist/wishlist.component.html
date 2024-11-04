@@ -3,6 +3,9 @@
     @for (game of games; track $index) {
       <app-game-card [game]="game" (like)="likeGame($index)"> </app-game-card>
     }
+    @if (games.length <= 0) {
+      <h3 class="text-xl py-4 text-zinc-200">No games in your wishlist yet!</h3>
+    }
   </ul>
 </main>
 <loading-spinner></loading-spinner>
