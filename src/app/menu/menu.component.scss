@@ -4,6 +4,11 @@
   width: 100%;
 }
 
+.searchbar {
+  --tw-bg-opacity: 0.6;
+  background-color: rgb(39 39 42 / var(--tw-bg-opacity)) /* #27272a */;
+}
+
 .animated-underline {
   position: relative;
   text-decoration: none;
