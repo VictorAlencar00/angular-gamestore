@@ -29,7 +29,7 @@
         (click)="selectGame(game)"
       >
         <img
-          class="rounded-xl object-cover"
+          class="rounded-xl object-cover cursor-pointer"
           [ngClass]="{ focused: game.name == highlightedGame?.name }"
           src="{{ game.horizontalsrc }}"
           alt="image"
