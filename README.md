@@ -1,4 +1,4 @@
-# 🎮 Gamestore
+# 🕹️ Gamestore
 
 ### Victor de Sousa Alencar
 
@@ -11,6 +11,7 @@ A website designed for an online games store.
 - [🚀 Technologies](#-technologies)
 - [🏠 Home Screen](#-home-screen)
 - [⚙️ Functionalities](#-search-for-games)
+- [🎮 Game Screen](#-game-screen)
 - [💳 Payment Simulator](#-payment-simulator)
 - [⚡ Development](#-development)
 
@@ -57,6 +58,12 @@ Responsive feedback when a game is not found in the store.
 Save your favorite games to your personal wishlist for easy access later.
 
 ---
+
+## 🎮 Game Screen
+
+Screen showcasing the game you have clicked.
+
+## ![Game Screen](/src/assets/readme/print-game.png)
 
 ## 💳 Payment Simulator
 
