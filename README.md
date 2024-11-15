@@ -10,7 +10,7 @@ A website designed for an online games store.
 
 - [🚀 Technologies](#-technologies)
 - [🏠 Home Screen](#-home-screen)
-- [⚙️ Functionalities](#-functionalities)
+- [⚙️ Functionalities](#-search-for-games)
 - [💳 Payment Simulator](#-payment-simulator)
 - [⚡ Development](#-development)
 
