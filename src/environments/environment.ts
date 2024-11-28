@@ -1,3 +1,3 @@
 export const environment = {
-  api: 'https://games-api-3nax.onrender.com/',
+  api: 'https://games-api-eight.vercel.app/',
 };
