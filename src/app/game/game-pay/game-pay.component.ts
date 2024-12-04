@@ -61,7 +61,7 @@ export class GamePayComponent {
     });
     setTimeout(() => {
       this.spinner.hideLoadingSpinner();
-    }, 300);
+    }, 100);
   }
 
   public successfulPurchase() {

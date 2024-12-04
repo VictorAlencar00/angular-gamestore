@@ -35,7 +35,7 @@ export class GameComponent implements OnInit {
     this.chosenGame = this.listedGame[0];
     setTimeout(() => {
       this.spinner.hideLoadingSpinner();
-    }, 300);
+    }, 100);
 
     if (typeof window !== 'undefined' && window.localStorage) {
       this.likedGamesFromStorage = JSON.parse(
