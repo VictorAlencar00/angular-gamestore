@@ -46,13 +46,11 @@ export class CarouselComponent implements OnInit {
           if (this.games.length) {
             this.alternateGame(this.games[0]);
             this.selectGame(this.games[0]);
-            setTimeout(() => {
-              this.spinner.hideLoadingSpinner();
-            }, 100);
+            this.spinner.hideLoadingSpinner();
           } else if (!this.games.length) {
             setTimeout(() => {
               this.getCarousel();
-            }, 400);
+            }, 100);
           }
         });
       });
