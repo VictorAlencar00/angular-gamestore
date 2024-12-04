@@ -12,12 +12,7 @@ import { LoadingSpinnerComponent } from '../loading-spinner/loading-spinner.comp
 @Component({
   selector: 'app-browse',
   standalone: true,
-  imports: [
-    RouterLink,
-    HttpClientModule,
-    GameCardComponent,
-    LoadingSpinnerComponent,
-  ],
+  imports: [HttpClientModule, GameCardComponent, LoadingSpinnerComponent],
   templateUrl: './browse.component.html',
   styleUrl: './browse.component.scss',
   providers: [],

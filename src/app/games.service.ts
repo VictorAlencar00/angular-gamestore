@@ -1,7 +1,7 @@
 import { Game } from './game.dto';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { finalize, Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
 
 @Injectable({
@@ -37,8 +37,4 @@ export class GamesService {
     const likedGames = listedGames.filter((game) => game.liked);
     localStorage.setItem('likedGames', JSON.stringify(likedGames));
   }
-
-  // public getGameById(id: number): Observable<Game> {
-  //   return this.http.get<Game>(environment.api + 'game/' + id);
-  // }
 }

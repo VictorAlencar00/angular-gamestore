@@ -2,14 +2,13 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Game } from '../../game.dto';
 import { GamesService } from './../../games.service';
-import { AsyncPipe, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { LoadingSpinnerService } from '../../loading-spinner.service';
-import { NgxSpinnerComponent } from 'ngx-spinner';
 
 @Component({
   selector: 'carousel',
   standalone: true,
-  imports: [RouterLink, AsyncPipe, NgClass, NgxSpinnerComponent],
+  imports: [RouterLink, NgClass],
   templateUrl: './carousel.component.html',
   styleUrl: './carousel.component.scss',
 })

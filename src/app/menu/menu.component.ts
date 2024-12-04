@@ -1,4 +1,3 @@
-import { Observable, map } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { MenuFunctionalitiesService } from '../menu-functionalities.service';
@@ -6,7 +5,7 @@ import { MenuFunctionalitiesService } from '../menu-functionalities.service';
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterLink],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss',
 })
