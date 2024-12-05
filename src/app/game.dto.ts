@@ -9,4 +9,5 @@ export interface Game {
   developer: string;
   releaseDate: Date;
   price: number;
+  description: string;
 }
