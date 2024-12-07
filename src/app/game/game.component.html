@@ -6,7 +6,7 @@
       </h1>
       <div class="md:flex md:justify-between gap-8">
         <img
-          class="rounded 1/4 md:w-3/5 lg:w-4/6 xl:w-9/12 object-cover game-cover"
+          class="rounded-xl md:w-3/5 lg:w-4/6 xl:w-9/12 object-cover game-cover"
           src="{{ chosenGame?.horizontalsrc }}"
           alt="Game cover"
         />
@@ -42,12 +42,12 @@
 
             <button
               [routerLink]="['pay']"
-              class="w-full h-12 rounded transitio text-white text-lg px-4 buy-button"
+              class="w-full h-12 rounded-lg transitio text-white text-lg px-4 buy-button"
             >
               Buy Now
             </button>
             <button
-              class="w-full h-12 rounded bg-gray-900 bg-zinc-700 hover:bg-zinc-600 transition text-lg px-4 wishlist-button"
+              class="w-full h-12 rounded-lg bg-gray-900 bg-zinc-700 hover:bg-zinc-600 transition text-lg px-4 wishlist-button"
               (click)="likeOrDislikeGame()"
             >
               @if (isChosenGameLiked) {
