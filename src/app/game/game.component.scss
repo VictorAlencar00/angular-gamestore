@@ -5,6 +5,7 @@
     width: 100%;
   }
 }
+
 #game {
   img {
     max-width: 100%;
@@ -22,4 +23,8 @@
 .wishlist-button {
   transition: 150ms ease-in-out;
   color: white;
+}
+
+.text-veryLightGray {
+  color: #ddd;
 }

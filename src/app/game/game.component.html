@@ -1,7 +1,7 @@
 @if (listedGame) {
   <main class="flex justify-center px-5 md:px-0" id="listedGame">
     <div id="game">
-      <h1 class="text-3xl sm:text-4xl w-full py-3 md:pb-10">
+      <h1 class="text-3xl font-bold sm:text-4xl w-full py-3 md:pb-10">
         {{ chosenGame?.name }}
       </h1>
       <div class="md:flex md:justify-between gap-8">
@@ -15,29 +15,32 @@
         >
           <div class="flex flex-col w-full py-2 gap-2">
             <span class="flex justify-between w-full">
-              <span class="text-gray-300"> Title: </span>
+              <span class="text-veryLightGray"> Title: </span>
               <span class=""> {{ chosenGame?.name }}</span></span
             >
             <span class="flex justify-between w-full">
-              <span class="text-gray-300"> Release Date: </span>
+              <span class="text-veryLightGray"> Release Date: </span>
               <span class=""> {{ chosenGame?.releaseDate }}</span></span
             >
             <span class="flex justify-between w-full">
-              <span class="text-gray-300"> Genre: </span>
+              <span class="text-veryLightGray"> Genre: </span>
               <span class=""> {{ chosenGame?.genre }}</span></span
             >
             <span class="flex justify-between w-full">
-              <span class="text-gray-300"> Publisher: </span>
+              <span class="text-veryLightGray"> Publisher: </span>
               <span>{{ chosenGame?.publisher }}</span></span
             >
             <span class="flex justify-between w-full">
-              <span class="text-gray-300"> Developer: </span>
+              <span class="text-veryLightGray"> Developer: </span>
               <span class="">{{ chosenGame?.developer }}</span></span
             >
           </div>
           <div class="flex gap-2 flex-col justify-end w-full">
-            <span class="w-full text-lg text-center pt-2 md:text-start"
-              >Price: ${{ chosenGame?.price }}
+            <span
+              class="w-full text-center pt-2 md:text-start md:flex md:justify-between text-lg"
+            >
+              <span class="text-veryLightGray">Price: </span>
+              <span class="">${{ chosenGame?.price }}</span>
             </span>
 
             <button
@@ -59,7 +62,7 @@
           </div>
         </div>
       </div>
-      <p class="py-6">
+      <p class="py-6 text-veryLightGray">
         {{ chosenGame?.description }}
       </p>
     </div>
