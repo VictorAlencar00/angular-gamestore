@@ -47,7 +47,7 @@ export class MenuComponent implements OnInit {
   }
 
   handleResize() {
-    if (window.innerWidth > 768) {
+    if (window.innerWidth > 640) {
       this.handleMobileMenuEvents();
     }
   }

@@ -10,6 +10,17 @@ body {
   background: radial-gradient(circle at center, #002b36, #0d1117);
 }
 
+.body-padding {
+  @media (min-width: 641px) {
+    padding-left: 2.25rem /* 36px */;
+    padding-right: 2.25rem /* 36px */;
+  }
+  @media (min-width: 1280px) {
+    padding-left: 8rem /* 128px */;
+    padding-right: 8rem /* 128px */;
+  }
+}
+
 .card {
   box-shadow: 0 0 3px 0 #021519;
 }
