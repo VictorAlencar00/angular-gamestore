@@ -6,7 +6,7 @@
     <button class="scroll-button left" (click)="scrollLeft('actionGamesList')">
       ◀
     </button>
-    <div class="overflow-x-hidden" id="actionGamesList">
+    <div class="category-list" id="actionGamesList">
       <ul class="flex flex-nowrap gap-4 py-4">
         @for (game of actionGames.slice(0, 9); track $index) {
           <app-game-card [game]="game" (like)="likeGame($event)">
@@ -26,7 +26,7 @@
     <button class="scroll-button left" (click)="scrollLeft('rpgGamesList')">
       ◀
     </button>
-    <div class="overflow-x-hidden" id="rpgGamesList">
+    <div class="category-list" id="rpgGamesList">
       <ul class="flex flex-nowrap gap-4 py-4">
         @for (game of rpgGames.slice(0, 9); track $index) {
           <app-game-card [game]="game" (like)="likeGame($event)">
