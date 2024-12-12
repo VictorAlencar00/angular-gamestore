@@ -1,0 +1,57 @@
+@if (game?.ageRating == "everyone") {
+  <div class="age-classification everyone">
+    <img src="../../assets/ESRB_E.png" alt="" />
+    <div class="description">
+      <span class="age">Everyone</span>
+      <span class="">For all ages, suitable for general audiences.</span>
+    </div>
+  </div>
+}
+@if (game?.ageRating == "everyone10+") {
+  <div class="age-classification everyoneOver10">
+    <img src="../../assets/ESRB_E10.png" alt="" />
+    <div class="description">
+      <span class="age">EVERYONE 10+</span>
+      <span
+        >For ages 10+, with mild impact from fantasy violence or comic
+        mischief.</span
+      >
+    </div>
+  </div>
+}
+@if (game?.ageRating == "teen") {
+  <div class="age-classification teen">
+    <img src="../../assets/ESRB_T.png" alt="" />
+    <div class="description">
+      <span class="age">Teen</span>
+      <span
+        >For ages 13+, with moderate impact from violence, language, or mature
+        themes.</span
+      >
+    </div>
+  </div>
+}
+@if (game?.ageRating == "mature") {
+  <div class="age-classification mature">
+    <img src="../../assets/ESRB_M.png" alt="" />
+    <div class="description">
+      <span class="age">Mature</span>
+      <span
+        >For ages 17+, with strong impact from violence, language, and mature
+        themes.</span
+      >
+    </div>
+  </div>
+}
+@if (game?.ageRating == "adultsOnly") {
+  <div class="age-classification adult">
+    <img src="../../assets/ESRB_AO.png" alt="" />
+    <div class="description">
+      <span class="age">ADULTS ONLY 18+</span>
+      <span
+        >For adults only (18+), with intense impact from violence, language, and
+        explicit content.</span
+      >
+    </div>
+  </div>
+}

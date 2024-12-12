@@ -6,13 +6,14 @@ import { GamesService } from './../games.service';
 import { Game } from './../game.dto';
 import { LoadingSpinnerService } from '../loading-spinner.service';
 import { LoadingSpinnerComponent } from '../loading-spinner/loading-spinner.component';
+import { AgeRatingComponent } from './age-rating/age-rating.component';
 
 @Component({
   selector: 'app-game',
   standalone: true,
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss',
-  imports: [RouterLink, LoadingSpinnerComponent],
+  imports: [RouterLink, LoadingSpinnerComponent, AgeRatingComponent],
 })
 export class GameComponent implements OnInit {
   constructor(public spinner: LoadingSpinnerService) {}
@@ -69,32 +70,4 @@ export class GameComponent implements OnInit {
 
     this.isChosenGameLiked = !this.isChosenGameLiked;
   }
-
-  // likeOrDislikeGame() {
-  //   if (
-  //     this.likedGamesFromStorage.some(
-  //       (likedGame) => likedGame.id === this.chosenGame?.id,
-  //     )
-  //   ) {
-  //     this.likedGamesFromStorage = this.likedGamesFromStorage.filter(
-  //       (likedGame) => likedGame.id !== this.chosenGame?.id,
-  //     );
-  //     window.localStorage.setItem(
-  //       'likedGames',
-  //       JSON.stringify(this.likedGamesFromStorage),
-  //     );
-  //     this.isChosenGameLiked = false;
-  //   } else if (
-  //     !this.likedGamesFromStorage.some(
-  //       (likedGame) => likedGame.id === this.chosenGame?.id,
-  //     )
-  //   ) {
-  //     this.likedGamesFromStorage?.push(this.listedGame[0]);
-  //     window.localStorage.setItem(
-  //       'likedGames',
-  //       JSON.stringify(this.likedGamesFromStorage),
-  //     );
-  //     this.isChosenGameLiked = true;
-  //   }
-  // }
 }

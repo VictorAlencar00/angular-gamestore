@@ -1,0 +1,43 @@
+.age-classification {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 0 8px;
+  gap: 20px;
+  font-size: 15px;
+  font-weight: 600;
+  color: black;
+  border-radius: 6px;
+
+  &.everyone {
+    background-color: #00a54e;
+  }
+  &.everyoneOver10 {
+    background-color: #2193d1;
+  }
+  &.teen {
+    background-color: #f58220;
+  }
+  &.mature {
+    background-color: #e20d13;
+  }
+  &.adult {
+    background-color: #0e0e0e;
+    border: 0.5px solid white;
+    color: white;
+  }
+
+  .description {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .age {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  img {
+    width: 48px;
+  }
+}

@@ -10,4 +10,5 @@ export interface Game {
   releaseDate: Date;
   price: number;
   description: string;
+  ageRating: string;
 }
