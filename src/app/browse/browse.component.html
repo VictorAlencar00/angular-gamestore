@@ -10,7 +10,10 @@
         </span>
       }
       @for (game of listedGames; track $index) {
-        <app-game-card [game]="game" (like)="likeGame($event)"> </app-game-card>
+        <li>
+          <app-game-card [game]="game" (like)="likeGame($event)">
+          </app-game-card>
+        </li>
       }
     </ul>
   </div>
