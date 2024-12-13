@@ -5,9 +5,11 @@
       class="w-6 h-6 absolute right-2 top-2 button"
       [ngClass]="{ likedGame: game.liked }"
       alt="like game"
+      aria-label="Like the game in the cover"
     >
       <img
         class="w-full h-full"
+        alt="Heart icon"
         [src]="
           game.liked
             ? '../../assets/favoriteIcon-full1.png'
