@@ -1,6 +1,6 @@
 <carousel></carousel>
 
-<main class="gamesByCategory" id="discover">
+<main class="gamesByCategory pb-3" id="discover">
   <h3 class="text-xl pt-4 md:pt-8 pb-4 text-zinc-200">Action Games</h3>
   <div class="category">
     <button class="scroll-button left" (click)="scrollLeft('actionGamesList')">
@@ -9,8 +9,10 @@
     <div class="category-list" id="actionGamesList">
       <ul class="flex flex-nowrap gap-4 py-4">
         @for (game of actionGames.slice(0, 9); track $index) {
-          <app-game-card [game]="game" (like)="likeGame($event)">
-          </app-game-card>
+          <li>
+            <app-game-card [game]="game" (like)="likeGame($event)">
+            </app-game-card>
+          </li>
         }
       </ul>
     </div>

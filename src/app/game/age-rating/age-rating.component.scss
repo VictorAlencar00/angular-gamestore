@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 10px;
-  padding: 4px 8px;
+  padding: 8px;
   gap: 20px;
   font-size: 15px;
   font-weight: 600;
@@ -24,6 +24,7 @@
   }
   &.mature {
     background-color: #e20d13;
+    color: white;
   }
   &.adult {
     background-color: #0e0e0e;
