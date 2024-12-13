@@ -17,12 +17,15 @@
         "
       />
     </button>
-    <a class="items-center flex flex-col" [routerLink]="['/game', game.name]"
-      ><img
-        class="object-cover object-top rounded-lg cover"
-        src="{{ game.verticalsrc }}"
-        alt="game cover"
-      />
+    <a class="items-center flex flex-col" [routerLink]="['/game', game.name]">
+      <div class="cover-container">
+        <img
+          class="object-cover object-top rounded-lg"
+          ngSrc="{{ game.verticalsrc }}"
+          fill
+          alt="game cover"
+        />
+      </div>
     </a>
   </div>
   <div class="flex flex-col gap-1 pt-1 pb-2">
