@@ -31,8 +31,10 @@
     <div class="category-list" id="rpgGamesList">
       <ul class="flex flex-nowrap gap-4 py-4">
         @for (game of rpgGames.slice(0, 9); track $index) {
-          <app-game-card [game]="game" (like)="likeGame($event)">
-          </app-game-card>
+          <li>
+            <app-game-card [game]="game" (like)="likeGame($event)">
+            </app-game-card>
+          </li>
         }
       </ul>
     </div>
