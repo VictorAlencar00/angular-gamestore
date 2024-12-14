@@ -1,5 +1,6 @@
 .carousel {
   display: flex;
+
   @media screen and (min-width: 1255px) {
     min-height: 150px;
     max-height: 500px;
@@ -14,10 +15,14 @@
       .caption {
         font-size: 16px;
         position: absolute;
-        bottom: 25px;
-        left: 25px;
+        bottom: 15px;
+        left: 15px;
+        @media screen and (min-width: 488px) {
+          bottom: 25px;
+          left: 25px;
+        }
       }
-      @media screen and (min-width: 720px) {
+      @media screen and (min-width: 768px) {
         .caption {
           font-size: 20px;
           left: 55px;
@@ -27,10 +32,16 @@
   }
 
   .picture {
+    height: 180px;
+    width: 1220px;
     min-width: 300px;
     max-width: 1220px;
-
-    width: 1220px;
+    @media screen and (min-width: 480px) {
+      height: 300px;
+    }
+    @media screen and (min-width: 780px) {
+      height: 420px;
+    }
     @media screen and (min-width: 1255px) {
       height: 500px;
       min-height: 250px;

@@ -3,15 +3,22 @@
   id="carousel"
 >
   <a
-    class="picture h-full highLightedGame"
+    class="picture highLightedGame"
     [routerLink]="['/game', highlightedGame?.name]"
   >
     <figure class="rounded h-full w-full">
-      <img
-        class="rounded-xl h-full w-full object-cover"
-        src="{{ highlightedGame?.horizontalsrc }}"
-        alt="carousel game image"
-      />
+      @if (highlightedGame) {
+        <div class="h-full w-full">
+          <img
+            class="rounded-xl object-cover"
+            ngSrc="{{ highlightedGame.horizontalsrc }}"
+            fill
+            priority
+            alt="carousel game image"
+          />
+        </div>
+      }
+
       <figcaption class="caption font-bold">
         {{ highlightedGame?.name }} <br />
         @if (highlightedGame?.price) {
