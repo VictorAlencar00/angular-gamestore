@@ -41,7 +41,7 @@ The home screen showcases the main design and features a dynamic carousel to hig
 
 ### 🔎 Search for Games
 
-![Search Results](/src/assets/readme/print-seach-ok.png)
+![Search Results](/src/assets/readme/print-search-ok.png)
 
 Effortlessly search for your favorite games.
 
