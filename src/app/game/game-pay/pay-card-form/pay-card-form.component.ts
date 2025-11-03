@@ -1,16 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { NgClass } from '@angular/common';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ChangeDetectorRef } from '@angular/core';
-import { Router, RouterLink, ActivatedRoute } from '@angular/router';
-import { NgClass } from '@angular/common';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
-import { CountriesService } from '../countries.service';
 import { CardGroupFormatDirective } from '../card-format.directive';
+import { CountriesService } from '../countries.service';
 import { FormatPostalCodeDirective } from '../postal-code-format.directive';
 
 @Component({

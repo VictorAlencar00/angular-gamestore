@@ -1,27 +1,44 @@
-.pay-form {
-  width: 80vw;
-  @media screen and (min-width: 520px) {
-    width: 450px;
-  }
-  @media screen and (min-width: 768px) {
-    width: 280px;
-  }
-  @media screen and (min-width: 900px) {
-    width: 450px;
-  }
+.radio-label {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #4b5563;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  color: #d1d5db;
+  transition: all 0.2s ease-in-out;
 }
 
-.gameToBuy {
-  @media screen and (max-width: 768px) {
-    align-items: center;
-  }
-  .name {
-    font-size: 1.05rem;
-    line-height: 12px;
-  }
-  .image {
-    @media screen and (max-width: 768px) {
-      width: 80vw;
-    }
+.peer:checked + .radio-label {
+  border-color: #0072ff;
+  background-color: rgba(0, 114, 255, 0.1);
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(0, 114, 255, 0.3);
+}
+
+.radio-label:hover {
+  border-color: #6b7280;
+}
+
+.peer:checked + .radio-label:hover {
+  border-color: #0072ff;
+}
+
+.cancel-button {
+  background-color: transparent;
+  border: 2px solid #4b5563;
+  color: #d1d5db;
+  font-weight: 500;
+  transition:
+    background-color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #374151;
+    border-color: #374151;
   }
 }

@@ -1,10 +1,19 @@
-<main>
-  <ul class="flex flex-wrap gap-3 py-3 w-full" id="wishlist">
+<main class="flex justify-center w-full px-4 sm:px-6">
+  <ul
+    class="flex flex-wrap gap-3 py-3 w-full max-w-[1440px] justify-center md:justify-start"
+    id="wishlist"
+  >
     @for (game of games; track $index) {
-      <app-game-card [game]="game" (like)="likeGame($index)"> </app-game-card>
+      <app-game-card [game]="game" (like)="likeGame($index)"></app-game-card>
     }
-    @if (games.length <= 0) {
-      <h3 class="text-xl py-4 text-zinc-200">No games in your wishlist yet!</h3>
+
+    @if (games.length === 0) {
+      <div class="w-full text-center py-10">
+        <h3 class="text-xl text-zinc-300">Sua lista de desejos está vazia.</h3>
+        <p class="text-zinc-500 mt-2">
+          Explore a loja para adicionar seus jogos favoritos.
+        </p>
+      </div>
     }
   </ul>
 </main>

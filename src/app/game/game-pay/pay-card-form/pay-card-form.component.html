@@ -1,142 +1,165 @@
 <form
-  class="flex flex-col gap-2"
+  class="flex flex-col gap-4"
   [formGroup]="cardForm"
   (ngSubmit)="onSubmitForm()"
   id="cardForm"
 >
-  <h3 class="pt-2 mt-2">
-    <strong class="text-xl">Payment Details:</strong>
+  <h3 class="pt-2 mt-2 font-poppins text-xl font-bold text-white">
+    Payment Details:
   </h3>
 
   @if (personalInfoStep) {
-    <label for="" class="purchaseInfoLabel">Country or Region</label>
-    <select
-      name="Country"
-      id=""
-      class="text-black purchaseInfoInput"
-      formControlName="countries"
-    >
-      @for (country of countries; track $index) {
-        <option value="" class="text-black">
-          {{ country.name.common }}
-          <img [src]="country.flags.png" alt="" />
-        </option>
-      }
-    </select>
-
-    <label class="purchaseInfoLabel" for="">First name</label>
-    <input
-      class="purchaseInfoInput"
-      formControlName="firstName"
-      type="text"
-      (change)="validateAllPurchaseInfoInputs()"
-    />
-
-    <label class="purchaseInfoLabel" for="">Last name</label>
-    <input
-      class="purchaseInfoInput"
-      formControlName="lastName"
-      type="text"
-      (change)="validateAllPurchaseInfoInputs()"
-    />
-
-    <label class="purchaseInfoLabel" for="">Address</label>
-    <input
-      class="purchaseInfoInput"
-      formControlName="adress"
-      type="text"
-      (change)="validateAllPurchaseInfoInputs()"
-    />
-
-    <label class="purchaseInfoLabel" for="">City</label>
-    <input
-      class="purchaseInfoInput"
-      formControlName="city"
-      type="text"
-      (change)="validateAllPurchaseInfoInputs()"
-    />
-
-    <label class="purchaseInfoLabel" for="">Postal Code</label>
-    <input
-      class="purchaseInfoInput"
-      id="postalCodeInput"
-      formControlName="postalCode"
-      type="text"
-      appFormatPostalCode
-      (change)="isPostalCodeValid()"
-    />
-
-    @if (
-      cardForm.get("postalCode")?.invalid && cardForm.get("postalCode")?.dirty
-    ) {
-      <span class="color-red"
-        >Postal code must include at least 4 characters.</span
+    <div>
+      <label for="countries" class="purchaseInfoLabel">Country or Region</label>
+      <select
+        name="Country"
+        id="countries"
+        class="purchaseInfoInput"
+        formControlName="countries"
       >
-    }
+        @for (country of countries; track $index) {
+          <option [value]="country.name.common" class="text-black">
+            {{ country.name.common }}
+          </option>
+        }
+      </select>
+    </div>
 
-    <div class="flex flex-col">
+    <div>
+      <label class="purchaseInfoLabel" for="firstName">First name</label>
+      <input
+        id="firstName"
+        class="purchaseInfoInput"
+        formControlName="firstName"
+        type="text"
+        (change)="validateAllPurchaseInfoInputs()"
+      />
+    </div>
+
+    <div>
+      <label class="purchaseInfoLabel" for="lastName">Last name</label>
+      <input
+        id="lastName"
+        class="purchaseInfoInput"
+        formControlName="lastName"
+        type="text"
+        (change)="validateAllPurchaseInfoInputs()"
+      />
+    </div>
+
+    <div>
+      <label class="purchaseInfoLabel" for="adress">Address</label>
+      <input
+        id="adress"
+        class="purchaseInfoInput"
+        formControlName="adress"
+        type="text"
+        (change)="validateAllPurchaseInfoInputs()"
+      />
+    </div>
+
+    <div>
+      <label class="purchaseInfoLabel" for="city">City</label>
+      <input
+        id="city"
+        class="purchaseInfoInput"
+        formControlName="city"
+        type="text"
+        (change)="validateAllPurchaseInfoInputs()"
+      />
+    </div>
+
+    <div>
+      <label class="purchaseInfoLabel" for="postalCodeInput">Postal Code</label>
+      <input
+        class="purchaseInfoInput"
+        id="postalCodeInput"
+        formControlName="postalCode"
+        type="text"
+        appFormatPostalCode
+        (change)="isPostalCodeValid()"
+      />
+      @if (
+        cardForm.get("postalCode")?.invalid && cardForm.get("postalCode")?.dirty
+      ) {
+        <span class="error-message"
+          >Postal code must include at least 4 characters.</span
+        >
+      }
+    </div>
+
+    <div class="flex flex-col gap-3 mt-4">
       <button
         [ngClass]="{ disabled: !arePersonalInfoValid() }"
-        class="bg-blue-500 text-white text-lg rounded-lg my-2 py-1 text-center transition"
+        class="buy-button w-full h-12 rounded-lg text-white text-lg font-semibold"
       >
         Proceed to card info
       </button>
       <a
-        class="bg-zinc-700 hover:bg-zinc-600 text-white text-lg rounded-lg my-2 py-1 text-center"
+        class="cancel-button w-full h-12 rounded-lg text-lg flex items-center justify-center cursor-pointer"
         (click)="reloadPage()"
         >Return</a
       >
     </div>
   }
-
   @if (cardInfoStep) {
-    <label class="purchaseInfoLabel" for="">Card Number:</label>
-    <input
-      class="purchaseInfoInput"
-      formControlName="cardNumber"
-      appCardGroupFormat
-      type="text"
-      (change)="validateAllPurchaseInfoInputs()"
-    />
+    <div>
+      <label class="purchaseInfoLabel" for="cardNumber">Card Number:</label>
+      <input
+        id="cardNumber"
+        class="purchaseInfoInput"
+        formControlName="cardNumber"
+        appCardGroupFormat
+        type="text"
+        (change)="validateAllPurchaseInfoInputs()"
+      />
+      @if (
+        cardForm.get("cardNumber")?.invalid && cardForm.get("cardNumber")?.dirty
+      ) {
+        <span class="error-message"
+          >Card number must contain 16 characters.</span
+        >
+      }
+    </div>
 
-    @if (
-      cardForm.get("cardNumber")?.invalid && cardForm.get("cardNumber")?.dirty
-    ) {
-      <span class="color-red">Card number must contain 16 characters.</span>
-    }
+    <div>
+      <label class="purchaseInfoLabel" for="expireDate">Expire Date:</label>
+      <input
+        id="expireDate"
+        class="purchaseInfoInput"
+        formControlName="expireDate"
+        type="date"
+        (change)="validateAllPurchaseInfoInputs()"
+      />
+    </div>
 
-    <label class="purchaseInfoLabel" for="">Expire Date:</label>
-    <input
-      class="purchaseInfoInput bg-zinc-700"
-      formControlName="expireDate"
-      type="date"
-      (change)="validateAllPurchaseInfoInputs()"
-    />
+    <div>
+      <label class="purchaseInfoLabel" for="cvv">CVV Number:</label>
+      <input
+        id="cvv"
+        class="purchaseInfoInput"
+        formControlName="cvv"
+        type="text"
+        required=""
+        pattern="\d{3}"
+        (change)="validateAllPurchaseInfoInputs()"
+      />
+      @if (cardForm.get("cvv")?.invalid && cardForm.get("cvv")?.dirty) {
+        <span class="error-message">CVV must contain 3 characters.</span>
+      }
+    </div>
 
-    <label for="">CVV Number:</label>
-    <input
-      class="purchaseInfoInput"
-      formControlName="cvv"
-      type="text"
-      required=""
-      pattern="\d{3}"
-      (change)="validateAllPurchaseInfoInputs()"
-    />
-
-    @if (cardForm.get("cvv")?.invalid && cardForm.get("cvv")?.dirty) {
-      <span class="color-red">CVV must contain 3 characters.</span>
-    }
-
-    <div class="flex flex-col">
+    <div class="flex flex-col gap-3 mt-4">
       <button
         [ngClass]="{ disabled: !cardForm.valid }"
-        class="bg-blue-500 text-white text-lg rounded-lg my-2 py-1 text-center transition"
+        class="buy-button w-full h-12 rounded-lg text-white text-lg font-semibold"
         type="submit"
       >
         Confirm Payment
       </button>
       <button
-        class="bg-zinc-700 hover:bg-zinc-600 text-white text-lg rounded-lg my-2 py-1 text-center"
+        type="button"
+        class="cancel-button w-full h-12 rounded-lg text-lg flex items-center justify-center"
         (click)="returnToLastStep()"
       >
         Return

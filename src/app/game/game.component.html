@@ -1,7 +1,9 @@
 @if (listedGame) {
   <main class="flex justify-center px-5 md:px-0" id="listedGame">
     <div id="game">
-      <h1 class="text-3xl font-bold sm:text-4xl w-full pb-5 lg:py-3 md:pb-10">
+      <h1
+        class="text-3xl font-bold sm:text-4xl w-full pb-5 lg:py-3 md:pb-10 font-poppins"
+      >
         {{ chosenGame?.name }}
       </h1>
       <div class="md:flex md:justify-between gap-8">
@@ -10,61 +12,79 @@
           src="{{ chosenGame?.horizontalsrc }}"
           alt="Game cover"
         />
-        <div
-          class="flex justify-end items-center md:w-2/5 gap-3 sm:gap-4 relative flex-col-reverse md:flex-col"
-        >
-          <div class="flex flex-col w-full py-2 gap-1 sm:gap-2">
-            <app-age-rating [game]="chosenGame"></app-age-rating>
 
-            <span class="flex justify-between w-full pt-2 sm:pt-0">
-              <span class="text-veryLightGray"> Title: </span>
-              <span class=""> {{ chosenGame?.name }}</span></span
-            >
-            <span class="flex justify-between w-full">
-              <span class="text-veryLightGray"> Release Date: </span>
-              <span class=""> {{ chosenGame?.releaseDate }}</span></span
-            >
-            <span class="flex justify-between w-full">
-              <span class="text-veryLightGray"> Genre: </span>
-              <span class=""> {{ chosenGame?.genre }}</span></span
-            >
-            <span class="flex justify-between w-full">
-              <span class="text-veryLightGray"> Publisher: </span>
-              <span>{{ chosenGame?.publisher }}</span></span
-            >
-            <span class="flex justify-between w-full">
-              <span class="text-veryLightGray"> Developer: </span>
-              <span class="">{{ chosenGame?.developer }}</span></span
-            >
-          </div>
+        <div
+          class="flex justify-end items-center md:w-2/5 gap-3 sm:gap-4 relative flex-col-reverse md:flex-col bg-zinc-900/70 p-4 sm:p-6 rounded-xl border border-zinc-700/50 mt-4 md:mt-0"
+        >
           <div class="flex gap-3 sm:gap-2 flex-col justify-end w-full">
             <span
-              class="w-full text-center pt-3 pb-1 md:py-0 md:text-start md:flex md:justify-between text-lg"
+              class="w-full text-center pt-3 pb-1 md:py-0 md:text-start md:flex md:justify-between text-lg items-center"
             >
-              <span class="text-veryLightGray">Price: </span>
-              <span class="font-bold">US$ {{ chosenGame?.price }}</span>
+              <span class="text-zinc-400 text-base">Price: </span>
+
+              <span class="font-bold text-white text-2xl"
+                >US$ {{ chosenGame?.price }}</span
+              >
             </span>
 
             <button
               [routerLink]="['pay']"
-              class="w-full h-12 rounded-lg transitio text-white text-lg px-4 buy-button"
+              class="w-full h-12 rounded-lg transition text-white text-lg px-4 buy-button"
             >
               Buy Now
             </button>
             <button
-              class="w-full h-12 rounded-lg bg-gray-900 bg-zinc-700 hover:bg-zinc-600 transition text-lg px-4 wishlist-button"
+              class="w-full h-12 rounded-lg transition text-lg px-4 wishlist-button"
               (click)="likeOrDislikeGame()"
             >
               @if (isChosenGameLiked) {
-                Remove from Wishlist
+                <span>Remove from Wishlist</span>
               } @else {
-                Add to Wishlist
+                <span>Add to Wishlist</span>
               }
             </button>
           </div>
+
+          <div class="flex flex-col w-full py-2 md:gap-2 info-list">
+            <app-age-rating [game]="chosenGame"></app-age-rating>
+
+            <span class="flex justify-between w-full pt-2 sm:pt-0">
+              <span class="text-zinc-400"> Title: </span>
+              <span class="text-zinc-100 text-end">
+                {{ chosenGame?.name }}</span
+              ></span
+            >
+            <span class="flex justify-between w-full">
+              <span class="text-zinc-400"> Release Date: </span>
+              <span class="text-zinc-100 text-end">
+                {{ chosenGame?.releaseDate }}</span
+              ></span
+            >
+            <span class="flex justify-between w-full">
+              <span class="text-zinc-400"> Genre: </span>
+              <span class="text-zinc-100 text-end">
+                {{ chosenGame?.genre }}</span
+              ></span
+            >
+            <span class="flex justify-between w-full">
+              <span class="text-zinc-400"> Publisher: </span>
+              <span class="text-zinc-100 text-end">{{
+                chosenGame?.publisher
+              }}</span></span
+            >
+            <span class="flex justify-between w-full">
+              <span class="text-zinc-400"> Developer: </span>
+              <span class="text-zinc-100 text-end">{{
+                chosenGame?.developer
+              }}</span></span
+            >
+          </div>
         </div>
       </div>
-      <p class="py-3 sm:py-6 text-veryLightGray">
+
+      <p
+        class="py-3 sm:py-6 text-zinc-300 text-base sm:text-lg leading-relaxed"
+      >
         {{ chosenGame?.description }}
       </p>
     </div>

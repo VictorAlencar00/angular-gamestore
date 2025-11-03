@@ -1,5 +1,11 @@
-* {
-  font-family: "Inter", sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+
+.font-poppins {
+  font-family: "Poppins", sans-serif;
 }
 
 html {
@@ -24,8 +30,3 @@ body {
 .card {
   box-shadow: 0 0 3px 0 #021519;
 }
-
-/* You can add global styles to this file, and also import other style files */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;

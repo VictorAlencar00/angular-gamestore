@@ -22,22 +22,71 @@
         aria-label="Open or close the menu"
         (click)="toggleMenu()"
       >
-        <img
-          src="../../assets/menu.png"
-          class="w-6 h-6"
-          alt="Sandwich menu icon"
-        />
+        @if (!isMobileMenuOpen) {
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+        } @else {
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18 18 6M6 6l12 12"
+            />
+          </svg>
+        }
       </button>
     </div>
-    <input
-      type="text"
-      placeholder="Search..."
-      (input)="onInputChange($event)"
-      class="rounded-xl pl-2 md:pl-4 h-8 text-white text-sm border-0 searchbar"
-      (click)="handleType()"
-    />
+
+    <div class="relative flex items-center">
+      <input
+        type="text"
+        placeholder="Search..."
+        (input)="onInputChange($event)"
+        class="rounded-xl pl-10 h-8 text-white text-sm border-0 searchbar"
+        (click)="handleType()"
+      />
+      <span
+        class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-5 h-5"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+          />
+        </svg>
+      </span>
+    </div>
+
     <a
       [routerLink]="['/wishlist']"
+      routerLinkActive="router-link-active"
       class="hover:text-white text-gray-400 animated-underline text-center items-center md:flex hidden"
       >Wishlist</a
     >

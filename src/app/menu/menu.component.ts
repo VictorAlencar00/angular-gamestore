@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { MenuFunctionalitiesService } from '../menu-functionalities.service';
 
 @Component({
@@ -14,6 +14,10 @@ export class MenuComponent implements OnInit {
     public menuFunctionalities: MenuFunctionalitiesService,
     public router: Router,
   ) {}
+
+  @Input()
+  isMobileMenuOpen!: boolean;
+
   ngOnInit(): void {
     if (typeof window !== 'undefined') {
       window.addEventListener('resize', () => this.handleResize());

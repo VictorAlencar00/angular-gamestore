@@ -1,18 +1,18 @@
 @if (game?.ageRating == "everyone") {
   <div class="age-classification everyone">
-    <img src="../../assets/ESRB_E.png" alt="" />
+    <img src="../../assets/ESRB_E.png" alt="ESRB Everyone Rating" />
     <div class="description">
       <span class="age">Everyone</span>
-      <span class="">For all ages, suitable for general audiences.</span>
+      <span class="text">For all ages, suitable for general audiences.</span>
     </div>
   </div>
 }
 @if (game?.ageRating == "everyone10+") {
   <div class="age-classification everyoneOver10">
-    <img src="../../assets/ESRB_E10.png" alt="" />
+    <img src="../../assets/ESRB_E10.png" alt="ESRB Everyone 10+ Rating" />
     <div class="description">
       <span class="age">EVERYONE 10+</span>
-      <span
+      <span class="text"
         >For ages 10+, with mild impact from fantasy violence or comic
         mischief.</span
       >
@@ -21,10 +21,10 @@
 }
 @if (game?.ageRating == "teen") {
   <div class="age-classification teen">
-    <img src="../../assets/ESRB_T.png" alt="" />
+    <img src="../../assets/ESRB_T.png" alt="ESRB Teen Rating" />
     <div class="description">
       <span class="age">Teen</span>
-      <span
+      <span class="text"
         >For ages 13+, with moderate impact from violence, language, or mature
         themes.</span
       >
@@ -33,10 +33,10 @@
 }
 @if (game?.ageRating == "mature") {
   <div class="age-classification mature">
-    <img src="../../assets/ESRB_M.png" alt="" />
+    <img src="../../assets/ESRB_M.png" alt="ESRB Mature 17+ Rating" />
     <div class="description">
-      <span class="age">Mature</span>
-      <span
+      <span class="age">Mature 17+</span>
+      <span class="text"
         >For ages 17+, with strong impact from violence, language, and mature
         themes.</span
       >
@@ -45,10 +45,10 @@
 }
 @if (game?.ageRating == "adultsOnly") {
   <div class="age-classification adult">
-    <img src="../../assets/ESRB_AO.png" alt="" />
+    <img src="../../assets/ESRB_AO.png" alt="ESRB Adults Only 18+ Rating" />
     <div class="description">
       <span class="age">ADULTS ONLY 18+</span>
-      <span
+      <span class="text"
         >For adults only (18+), with intense impact from violence, language, and
         explicit content.</span
       >

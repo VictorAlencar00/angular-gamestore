@@ -10,21 +10,51 @@
   img {
     max-width: 100%;
   }
+  h1 {
+    font-family: "Poppins", sans-serif;
+  }
 }
 
 .buy-button {
-  background-color: #2563eb;
-  transition: 150ms ease-in-out;
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  border: none;
+  font-weight: 600;
+  color: white;
+  box-shadow: 0 4px 20px rgba(0, 150, 255, 0.3);
+  transition:
+    transform 0.2s ease-out,
+    box-shadow 0.2s ease-out;
+  will-change: transform;
+
   &:hover {
-    background-color: #3b82f6;
+    transform: scale(1.05);
+    box-shadow: 0 6px 25px rgba(0, 150, 255, 0.5);
   }
 }
 
 .wishlist-button {
-  transition: 150ms ease-in-out;
-  color: white;
+  background-color: transparent;
+  border: 2px solid #4b5563;
+  color: #d1d5db;
+  font-weight: 500;
+  transition:
+    background-color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #374151;
+    border-color: #374151;
+  }
 }
 
-.text-veryLightGray {
-  color: #ddd;
+.info-list .flex {
+  border-bottom: 1px solid #3f3f46;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.info-list .flex:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }

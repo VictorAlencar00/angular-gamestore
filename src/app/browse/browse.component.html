@@ -2,17 +2,27 @@
   <h3 class="text-xl py-4 text-zinc-200">All Games</h3>
   <div class="flex w-full">
     <ul
-      class="flex flex-wrap gap-3 w-full pt-4 justify-center sm:justify-between lg:justify-start ul"
+      class="flex flex-wrap gap-3 w-full pt-4 justify-center sm:justify-start ul"
     >
       @if (gameNotFound) {
-        <span
-          >We Still dont have the title <strong>"{{ gameSearched }}"</strong>
-        </span>
+        <div
+          class="w-full text-center bg-zinc-800/50 p-6 rounded-xl border border-zinc-700 text-zinc-300"
+        >
+          <p class="text-lg">
+            We couldn't find a match for
+            <strong>"{{ gameSearched }}"</strong>
+          </p>
+          <p class="text-sm text-zinc-400 mt-2">
+            Try checking the spelling or searching for another title.
+          </p>
+        </div>
       }
       @for (game of listedGames; track $index) {
         <li>
-          <app-game-card [game]="game" (like)="likeGame($event)">
-          </app-game-card>
+          <app-game-card
+            [game]="game"
+            (like)="likeGame($event)"
+          ></app-game-card>
         </li>
       }
     </ul>

@@ -1,12 +1,23 @@
+.menu-bar {
+  background-color: #0d1117;
+  border-bottom: 1px solid #002b36;
+}
+
 .menu {
   min-width: 300px;
   max-width: 1440px;
   width: 100%;
+  font-family: "Poppins", sans-serif;
+}
+
+.menu a {
+  font-family: "Poppins", sans-serif;
 }
 
 .searchbar {
   --tw-bg-opacity: 0.6;
-  background-color: rgb(39 39 42 / var(--tw-bg-opacity)) /* #27272a */;
+  background-color: rgb(39 39 42 / var(--tw-bg-opacity));
+  padding-left: 2.5rem;
 }
 
 .animated-underline {
@@ -30,4 +41,13 @@
     width: 100%;
     left: 0;
   }
+}
+
+.animated-underline.router-link-active {
+  color: #fff;
+}
+
+.animated-underline.router-link-active::after {
+  width: 100%;
+  left: 0;
 }

@@ -4,14 +4,29 @@
   <h3 class="text-xl pt-4 md:pt-8 pb-4 text-zinc-200">Action Games</h3>
   <div class="category">
     <button class="scroll-button left" (click)="scrollLeft('actionGamesList')">
-      ◀
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2.5"
+        stroke="currentColor"
+        class="w-6 h-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15.75 19.5 8.25 12l7.5-7.5"
+        />
+      </svg>
     </button>
     <div class="category-list" id="actionGamesList">
-      <ul class="flex flex-nowrap gap-4 py-4">
+      <ul class="flex flex-nowrap gap-4 py-4 px-1">
         @for (game of actionGames.slice(0, 9); track $index) {
           <li>
-            <app-game-card [game]="game" (like)="likeGame($event)">
-            </app-game-card>
+            <app-game-card
+              [game]="game"
+              (like)="likeGame($event)"
+            ></app-game-card>
           </li>
         }
       </ul>
@@ -20,26 +35,68 @@
       class="scroll-button right"
       (click)="scrollRight('actionGamesList')"
     >
-      ▶
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2.5"
+        stroke="currentColor"
+        class="w-6 h-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="m8.25 4.5 7.5 7.5-7.5 7.5"
+        />
+      </svg>
     </button>
   </div>
+
   <h3 class="text-xl py-4 mt-2 text-zinc-200">RPG Games</h3>
   <div class="category">
     <button class="scroll-button left" (click)="scrollLeft('rpgGamesList')">
-      ◀
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2.5"
+        stroke="currentColor"
+        class="w-6 h-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15.75 19.5 8.25 12l7.5-7.5"
+        />
+      </svg>
     </button>
     <div class="category-list" id="rpgGamesList">
-      <ul class="flex flex-nowrap gap-4 py-4">
+      <ul class="flex flex-nowrap gap-4 py-4 px-1">
         @for (game of rpgGames.slice(0, 9); track $index) {
           <li>
-            <app-game-card [game]="game" (like)="likeGame($event)">
-            </app-game-card>
+            <app-game-card
+              [game]="game"
+              (like)="likeGame($event)"
+            ></app-game-card>
           </li>
         }
       </ul>
     </div>
     <button class="scroll-button right" (click)="scrollRight('rpgGamesList')">
-      ▶
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2.5"
+        stroke="currentColor"
+        class="w-6 h-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="m8.25 4.5 7.5 7.5-7.5 7.5"
+        />
+      </svg>
     </button>
   </div>
 </main>

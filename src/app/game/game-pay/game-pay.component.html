@@ -1,65 +1,101 @@
-<main class="min-h-svh flex items-center justify-center">
+<main class="min-h-svh flex items-center justify-center p-4">
   <div
-    class="flex flex-col-reverse md:flex-row gap-10 justify-center py-4 px-4 sm:p-0 items-center md:items-center game-pay"
+    class="flex flex-col-reverse md:flex-row gap-6 lg:gap-8 justify-center items-start w-full max-w-6xl"
   >
-    @if (!paymentMethodChosen) {
-      <form [formGroup]="form" class="flex flex-col gap-2 pay-form">
-        <h2><strong class="text-xl">Payment Method</strong></h2>
-        <label class="text-lg text-zinc-200" for="payment"
-          >Choose the payment method:</label
-        >
-        <select
-          name="paymentMethod"
-          id="paymentMethod"
-          class="text-black purchaseInfoInput"
-          formControlName="method"
-          (change)="chosenPaymentMethod(form.get('method')?.value)"
-        >
-          <option value="credit">Credit Card</option>
-          <option value="debit">Debit Card</option>
-        </select>
+    <div
+      class="w-full md:w-2/5 lg:w-1/3 bg-zinc-900/70 border border-zinc-700/50 rounded-xl p-6 flex flex-col gap-5"
+    >
+      @if (!paymentMethodChosen) {
+        <form [formGroup]="form" class="flex flex-col gap-5">
+          <h2 class="text-xl font-poppins font-bold text-white">
+            Payment Method
+          </h2>
+          <div class="flex flex-col gap-2">
+            <label class="text-base text-zinc-300" for="payment"
+              >Choose the payment method:</label
+            >
 
-        <div class="flex flex-col">
+            <div class="flex flex-col sm:flex-row gap-4 w-full">
+              <input
+                type="radio"
+                id="credit"
+                value="credit"
+                formControlName="method"
+                class="peer hidden"
+              />
+              <label
+                for="credit"
+                class="radio-label"
+                (click)="chosenPaymentMethod('credit')"
+              >
+                <span class="text-xl">💳</span>
+                Credit Card
+              </label>
+
+              <input
+                type="radio"
+                id="debit"
+                value="debit"
+                formControlName="method"
+                class="peer hidden"
+              />
+              <label
+                for="debit"
+                class="radio-label"
+                (click)="chosenPaymentMethod('debit')"
+              >
+                <span class="text-xl">💵</span>
+                Debit Card
+              </label>
+            </div>
+          </div>
+
           <a
-            class="bg-zinc-700 hover:bg-zinc-600 transition text-white text-lg rounded-lg my-2 py-1 text-center"
+            class="w-full h-12 rounded-lg transition text-lg px-4 flex items-center justify-center cancel-button"
             [routerLink]="['..']"
             >Cancel</a
           >
+
+          <span class="text-sm text-zinc-400 leading-relaxed"
+            >No real credit or debit card information is needed, and any other
+            details requested are just to complete the forms for simulation
+            purposes.</span
+          >
+        </form>
+      }
+      @if (paymentMethodChosen == "credit") {
+        <pay-card-form></pay-card-form>
+      }
+      @if (paymentMethodChosen == "debit") {
+        <pay-card-form></pay-card-form>
+      }
+    </div>
+
+    <div
+      class="w-full md:w-3/5 lg:w-2/3 bg-zinc-900/70 border border-zinc-700/50 rounded-xl p-6"
+    >
+      <div class="flex flex-col gap-5">
+        <div class="flex flex-col gap-2">
+          <strong class="text-xl pb-1 font-poppins font-bold text-white"
+            >Purchase Details</strong
+          ><span class="text-zinc-300 py-2">You are buying:</span>
+          <img
+            class="rounded-lg mb-4 w-full object-cover"
+            src="{{ namedGame?.horizontalsrc }}"
+            alt="Game image"
+          />
+
+          <strong class="text-lg text-white">{{ namedGame?.name }}</strong>
+          <span class="text-base text-zinc-400">{{
+            namedGame?.publisher
+          }}</span>
         </div>
-        <span class="text-yellow-400"
-          >No real credit or debit card information is needed, and any other
-          details requested are just to complete the forms for simulation
-          purposes.</span
-        >
-      </form>
-    }
-
-    @if (paymentMethodChosen == "credit") {
-      <pay-card-form></pay-card-form>
-    }
-    @if (paymentMethodChosen == "debit") {
-      <pay-card-form></pay-card-form>
-    }
-
-    <div class="flex flex-col gap-5">
-      <div class="flex flex-col gap-2 gameToBuy">
-        <strong class="text-xl pb-1">Purchase Details</strong
-        ><span class="text-zinc-200 py-2">You are buying:</span>
-        <img
-          class="md:h-52 rounded-lg mb-4 image"
-          src="{{ namedGame?.horizontalsrc }}"
-          alt="Game image"
-        />
-
-        <strong class="name text-white">{{ namedGame?.name }}</strong>
-        <span class="text-zinc-300">{{ namedGame?.publisher }}</span>
-      </div>
-      <div class="flex flex-col py-2 gap-1">
-        <strong class="text-lg text-zinc-300">Total:</strong>
-        <span
-          class="text-xl border-t py-1 border-t-slate-300 text-end font-bold"
-          >US$ {{ namedGame?.price }}</span
-        >
+        <div class="flex flex-col pt-4 gap-1 mt-4 border-t border-zinc-700/80">
+          <strong class="text-base text-zinc-400">Total:</strong>
+          <span class="text-3xl text-white font-bold text-end"
+            >US$ {{ namedGame?.price }}</span
+          >
+        </div>
       </div>
     </div>
   </div>

@@ -12,11 +12,30 @@
   .highLightedGame {
     figure {
       position: relative;
+      /* Novo: Adiciona um gradiente overlay (scrim) para legibilidade */
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 50%; /* Cobre a metade inferior */
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+        /* Garante que o border-radius do overlay combine com o da imagem */
+        border-radius: 0 0 0.75rem 0.75rem; /* 0.75rem = rounded-xl do Tailwind */
+        z-index: 1; /* Fica acima da imagem */
+        pointer-events: none; /* Permite cliques através dele */
+      }
+
       .caption {
         font-size: 16px;
         position: absolute;
         bottom: 15px;
         left: 15px;
+        z-index: 2; /* Fica acima do overlay */
+        /* Adiciona sombra ao texto para destacar mais */
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+
         @media screen and (min-width: 488px) {
           bottom: 25px;
           left: 25px;
@@ -61,6 +80,7 @@
       padding: 3px 4px;
       width: 190px;
       height: 90px;
+      /* A transição estava boa, mantida */
       &:hover,
       &.focused {
         transform: scale(1.15);
